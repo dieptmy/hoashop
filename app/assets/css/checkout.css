@@ -1,4 +1,4 @@
-.items {
+.checkout-page .items {
     background: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -6,56 +6,56 @@
     min-height: 200px;
 }
 
-.items h2,
-.items label {
+.checkout-page .items h2,
+.checkout-page .items label {
     font-size: 24px;
     margin-bottom: 20px;
 }       
 
-.items .item {
+.checkout-page .items .item {
     align-items: center;
     padding: 15px;
 }
 
-.items p {
+.checkout-page .items p {
     font-size: 16px;
     margin-bottom: 6px;
 }       
 
-.items button {
+.checkout-page .items button {
     background-color: white;
     color: brown;
     border-color: brown;
     padding: 10px 20px;
 }                           
 
-.items button:hover {
+.checkout-page .items button:hover {
     background-color: brown;
     color: white;
 }
 
-.items button:active {
+.checkout-page .items button:active {
     background-color: #8b0000;
 }
 
-.items button:focus {
+.checkout-page .items button:focus {
     box-shadow: none;
 }       
 
-.items user-info {
+.checkout-page .items user-info {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.items .infor {
+.checkout-page .items .infor {
     display: flex;
     justify-content: space-between;
     min-width: 200px;
     border-bottom: 1px solid #eee;
 }
 
-.infor h2 {
+.checkout-page .infor h2 {
     font-size: 20px;
 }
 
@@ -67,41 +67,41 @@
     padding: 5px;
 } */
 
-.product-image img {
+.checkout-page .product-image img {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
 
-.card-title {
+.checkout-page .card-title {
     font-size: 16px;    
     font-weight: 600;
     margin-bottom: 10px;
 }
 
-.card-brand {
+.checkout-page .card-brand {
     font-size: 14px;
     color: #666;
 }
 
-.card-price {
+.checkout-page .card-price {
     font-size: 16px;
     color: #e94560;
     font-weight: 600;
     padding: 0 10px;
 }
 
-.card-body{
+.checkout-page .card-body{
     display: flex;
     justify-content: space-between;
 }
 
-.card-quantity {
+.checkout-page .card-quantity {
     display: flex;
     align-items: center;
 }
 
-.card-info {
+.checkout-page .card-info {
     max-width: 300px;
     display: flex;
     flex-direction: column;
@@ -110,19 +110,19 @@
 
 
 
-.order-summary {
+.checkout-page .order-summary {
     background: #fff;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);   
 }
 
-.order-summary h3 {
+.checkout-page .order-summary h3 {
     font-size: 20px;
     margin-bottom: 20px;
 }
 
-.summary-item {
+.checkout-page .summary-item {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
@@ -131,7 +131,7 @@
 }
 
 
-.btn-checkout {
+.checkout-page .btn-checkout {
     width: 100%;
     padding: 12px;
     background: #e94560;
@@ -144,16 +144,16 @@
     transition: background 0.3s ease;
 }
 
-.btn-checkout:hover {
+.checkout-page .btn-checkout:hover {
     background-color: brown;
     color: white;
 }
 
-.btn-checkout:active {
+.checkout-page .btn-checkout:active {
     background-color: #8b0000;
 }
 
-.button-checkout {
+.checkout-page .button-checkout {
     width: 100%;
     padding: 12px;
     background: #e94560;
@@ -166,30 +166,30 @@
     transition: background 0.3s ease;
 }
 
-.button-checkout:hover {
+.checkout-page .button-checkout:hover {
     background-color: brown;
     color: white;
 }
 
-.button-checkout:active {
+.checkout-page .button-checkout:active {
     background-color: #8b0000;
 }
 
-.info {
+.checkout-page .info {
     border: none;
     border-radius: 0;
     border-bottom: 1px solid #eee;
     margin-bottom: 15px;
 }
 
-.total {
+.checkout-page .total {
     border-top: 1px solid #eee;
     padding-top: 15px;
     font-weight: 600;
     font-size: 18px;
 }
 
-.summary-item {
+.checkout-page .summary-item {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
@@ -197,7 +197,7 @@
     color: #333;
 }
 
-.payment-method-box {
+.checkout-page .payment-method-box {
     background: #fff;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     margin-top: 24px;
@@ -206,20 +206,20 @@
     padding-bottom: 40px;
 }
 
-.payment-method-header {
+.checkout-page .payment-method-header {
     font-size: 1.2rem;
     font-weight: 600;
     color: #222;
     margin-bottom: 16px;
 }
 
-.payment-method-content {
+.checkout-page .payment-method-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.radio-container {
+.checkout-page .radio-container {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -228,11 +228,11 @@
     color: #222;
 }
 
-.radio-container input[type="radio"] {
+.checkout-page .radio-container input[type="radio"] {
     display: none;
 }
 
-.custom-radio {
+.checkout-page .custom-radio {
     width: 16px;
     height: 16px;
     border: 2px solid #e94560;
@@ -243,7 +243,7 @@
     background: #fff;
 }
 
-.radio-container input[type="radio"]:checked + .custom-radio::after {
+.checkout-page .radio-container input[type="radio"]:checked + .custom-radio::after {
     content: "";
     display: block;
     width: 8px;
@@ -255,19 +255,19 @@
     left: 2px;
 }
 
-.payment-icon {
+.checkout-page .payment-icon {
     width: 28px;
     height: 28px;
     margin: 0 10px 0 6px;
     vertical-align: middle;
 }
 
-.payment-label {
+.checkout-page .payment-label {
     font-size: 1.1rem;
     color: #222;
 }
 
-.change-method {
+.checkout-page .change-method {
     color: #1976d2;
     font-size: 1rem;
     text-decoration: none;
@@ -276,12 +276,12 @@
     transition: color 0.2s;
 }
 
-.change-method:hover {
+.checkout-page .change-method:hover {
     color: #0d47a1;
     text-decoration: underline;
 }
 
-.save-method {
+.checkout-page .save-method {
     color: #1976d2;
     font-size: 1rem;
     text-decoration: none;
@@ -290,7 +290,7 @@
     transition: color 0.2s;
 }
 
-.save-method:hover {
+.checkout-page .save-method:hover {
     color: #0d47a1;
     text-decoration: underline;
 }
@@ -315,7 +315,7 @@
 }
 
 @media (max-width: 768px) {
-    .card-body {
+    .checkout-page .card-body {
         flex-direction: column;
     }
     

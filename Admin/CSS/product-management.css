@@ -1,0 +1,528 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    flex: 1;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 20px; /* Khoảng cách giữa avatar và menu */
+    background-color: #444; /* Màu nền cho khung avatar */
+    border-radius: 10px;
+    color: white;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-name {
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+/* CSS cho nút đăng xuất */
+.logout-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.logout-button i {
+    margin-right: 5px;
+}
+
+.logout-button:hover {
+    background-color: #d32f2f;
+}
+
+/* CSS cho icon đăng xuất */
+.logout-icon {
+    font-size: 24px; /* Kích thước của icon */
+    cursor: pointer; /* Thay đổi con trỏ thành hình bàn tay khi hover */
+    color: #000; /* Màu sắc mặc định của icon */
+}
+
+.logout-icon:hover {
+    color: red; /* Đổi màu khi hover */
+}
+
+/* Thanh điều hướng */
+nav.navigation {
+    background-color: black;
+    width: 220px;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 30px;
+    padding-left: 10px;
+    transition: width 0.3s;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.navigation-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navigation-item {
+    margin-bottom: 15px; /* Thêm khoảng cách giữa các mục */
+}
+
+.navigation-link {
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px; /* Tăng kích thước vùng click để dễ nhìn hơn */
+    display: block;
+    transition: background-color 0.3s;
+    border-radius: 5px; /* Thêm bo góc cho mềm mại */
+}
+
+.navigation-link:hover {
+    background-color: #555;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 6px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+.footer {
+    background-color: #f4f4f4;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    margin-top: auto; /* Đẩy footer xuống dưới */
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 50%;
+    height: 20px;
+}
+
+/* Giảm kích thước của ô chứa checkbox */
+.checkbox-column {
+    padding: 5px; /* Giảm padding chỉ cho ô chứa checkbox */
+    width: 30px; /* Giảm chiều rộng chỉ cho ô chứa checkbox */
+}
+
+.admin-header {
+    margin-left: 230px; /* Đẩy phần chính sang phải để không chồng lên thanh điều hướng */
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Nút đóng (dấu X) */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#addProductBtn {
+    background-color: #007BFF; /* Màu xanh dương */
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#addProductBtn i {
+    font-size: 18px;
+}
+
+#addProductBtn:hover {
+    background-color: #0056b3; /* Màu xanh đậm hơn khi hover */
+}
+
+.product-management {
+    margin-left: 230px;
+    padding: 30px;
+    background-color: #f9f9f9;
+}
+
+.product-management-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}  
+
+.edit-btn {
+    background-color: white; /* Nền màu trắng */
+    border: 2px solid #f1c40f; /* Viền màu vàng */
+    border-radius: 8px; /* Bo tròn góc */
+    cursor: pointer;
+    padding: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển mượt mà */
+}
+
+.edit-btn i {
+    font-size: 15px;
+    color: #f1c40f; /* Màu vàng cho icon */
+    transition: color 0.3s; /* Hiệu ứng chuyển mượt mà cho icon */
+}
+
+.edit-btn:hover {
+    background-color: #f1c40f; /* Nền màu vàng khi hover */
+    border-color: #f1c40f; /* Viền giữ nguyên màu vàng */
+}
+
+.edit-btn:hover i {
+    color: black; /* Màu đen cho icon khi hover */
+}
+
+/* Modal (ẩn ban đầu) */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 30px;
+}
+
+/* Nội dung của modal */
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 44%; /* Chiều rộng của modal */
+    border-radius: 10px;
+}
+
+.product-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group-img {
+    display: flex;
+    flex-direction: row;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="number"], textarea, select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+#productImage {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.form-group-buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px; /* Reduced gap between buttons */
+    margin-top: 20px; /* Add space above the buttons */
+    align-self: flex-end; /* Align buttons to the right end of the modal */
+}
+
+/* Adjust button size */
+.save-btn, .cancel-add-btn {
+    padding: 8px 15px; /* Smaller padding */
+    font-size: 14px;   /* Reduce font size */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.save-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.cancel-add-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+#imagePreview {
+    border: 1px solid #ccc;
+    padding: 5px;
+    max-width: 150px;
+    height: auto;
+    display: none;
+}
+
+/* Style for hiding file name display */
+#editFileName {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.delete-btn {
+    background-color: #DC3545; /* Màu đỏ */
+    color: white;
+    font-size: 14px;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.delete-btn i {
+    font-size: 16px;
+}
+
+.delete-btn:hover {
+    background-color: #A71D2A; /* Màu đỏ đậm hơn */
+    transform: scale(1.05); /* Hiệu ứng phóng to nhẹ */
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px; /* Khoảng cách giữa các nút */
+    justify-content: center; /* Căn giữa các nút trong ô */
+    align-items: center; /* Căn chỉnh dọc */
+}
+
+@media (max-width: 1354px) {
+    .button {
+        font-size: 10px;
+    }
+    
+    .form-group input {
+        font-size: 16px; /* Tăng kích thước chữ trong input */
+    }
+
+    .confirm-btn {
+        font-size: 14px; /* Tăng kích thước chữ của nút */
+    }
+
+    .table1 td {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1240px) {
+    .button {
+        font-size: 10px;
+    }
+    
+    .form-group input {
+        font-size: 16px; /* Tăng kích thước chữ trong input */
+    }
+
+    .confirm-btn {
+        font-size: 14px; /* Tăng kích thước chữ của nút */
+    }
+
+    .table1 td {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .navigation {
+        display: none;
+    }
+
+    /* Header của trang admin */
+    .admin-header {
+        margin-left: 0px;
+    }  
+
+    .product-management {
+        margin-left: 0px;
+    }
+
+    .table1 th {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 1080px) {
+    .modal-content {
+        width: 500px;
+        font-size: 15px;
+    }
+    .form-group label {
+        font-size: 13px;
+    }
+    .form-group input, 
+    .form-group select {
+        font-size: 11px;
+    }
+    .confirm-btn {
+        font-size: 10px;
+    }
+    .save-btn,
+    .cancel-add-btn {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 950px) {
+    #productTable th {
+        font-size: 14px;
+    }
+    #productTable td {
+        font-size: 13px;
+    }
+    .modal-content {
+        width: 450px;
+        font-size: 14px;
+        height: 550px;
+    }
+    .form-group label {
+        font-size: 12px;
+    }
+    .form-group input, 
+    .form-group select {
+        font-size: 10px;
+    }
+    .confirm-btn {
+        font-size: 9px;
+    }
+    .save-btn,
+    .cancel-add-btn {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 780px) {
+    #productTable th {
+        font-size: 13px;
+    }
+    #productTable td {
+        font-size: 12px;
+    }
+    .modal-content {
+        width: 400px;
+        font-size: 13px;
+        height: 530px;
+    }
+    .form-group label {
+        font-size: 11px;
+    }
+    .form-group input,
+    .form-group select {
+        font-size: 10px;
+    }
+    .confirm-btn {
+        font-size: 8px;
+    }
+    .save-btn,
+    .cancel-add-btn {
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 600px) {
+    #productTable th {
+        font-size: 12px;
+    }
+    #productTable td {
+        font-size: 12px;
+    }
+    .modal-content {
+        width: 400px;
+        font-size: 13px;
+        height: 530px;
+    }
+    .form-group label {
+        font-size: 11px;
+    }
+    .form-group input,
+    .form-group select {
+        font-size: 10px;
+    }
+    .confirm-btn {
+        font-size: 8px;
+    }
+    .save-btn,
+    .cancel-add-btn {
+        font-size: 11px;
+    }
+}

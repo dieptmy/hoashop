@@ -11,7 +11,7 @@ alert('Bạn đã đặt hàng thành công!');
     if (!orderId) {
         document.body.innerHTML = '<div class="container mt-5"><div class="alert alert-danger">Không tìm thấy đơn hàng!</div></div>';
     } else {
-        fetch('api/getOrderDetail.php?order_id=' + orderId)
+        fetch('/app/api/getOrderDetail.php?order_id=' + orderId)
             .then(res => res.json())
             .then(data => {
                 if (!data.success) {

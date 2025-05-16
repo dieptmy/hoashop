@@ -52,7 +52,7 @@ document.getElementById('edit-address').onclick = async function() {
     // Load cities
     const citySelect = document.getElementById('editCity');
     citySelect.innerHTML = '<option value="">Chọn thành phố</option>';
-    const res = await fetch('api/getCities.php');
+    const res = await fetch('/app/api/getCities.php');
     const data = await res.json();
     if (data.success) {
         data.data.forEach(city => {
@@ -65,7 +65,7 @@ document.getElementById('edit-address').onclick = async function() {
 
     // Nếu user đã có city, set value và load quận/huyện
     if (auth.city) {
-        const id = await fetch('api/getCities.php?city_name=' + auth.city);
+        const id = await fetch('/app/api/getCities.php?city_name=' + auth.city);
         const data = await id.json();
         citySelect.value = data.city_id;
         console.log(data.city_id);
@@ -88,7 +88,7 @@ async function loadDistricts(cityId, selectedDistrict = '') {
     const districtSelect = document.getElementById('editDistrict');
     districtSelect.innerHTML = '<option value="">Chọn quận/huyện</option>';
     if (!cityId) return;
-    const res = await fetch('api/getDistricts.php?city_id=' + cityId);
+    const res = await fetch('/app/api/getDistricts.php?city_id=' + cityId);
     const data = await res.json();
     if (data.success) {
         data.data.forEach(district => {
@@ -120,7 +120,7 @@ document.getElementById('saveAddress').onclick = async function() {
     }
     // Gửi lên server
     const auth = JSON.parse(localStorage.getItem('auth') || '{}');
-    const response = await fetch('api/updateUser.php', {
+    const response = await fetch('/app/api/updateUser.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -149,7 +149,7 @@ document.getElementById('saveAddress').onclick = async function() {
     for (const item of productBuy) {
         const productVolumeId = item.volume_product_id;
         const quantity = item.quantity;
-        const res = await fetch('api/product-detail.php?id=' + productVolumeId);
+        const res = await fetch('/app/api/product-detail.php?id=' + productVolumeId);
         const data = await res.json();
         if (!data.success) {
             document.getElementById('product-info').innerHTML = '<p>Không tìm thấy sản phẩm!</p>';
@@ -198,7 +198,7 @@ async function checkout() {
     const address = [auth.address, auth.district, auth.city].filter(Boolean).join(', ');
 
     // Chuẩn bị dữ liệu gửi lên server
-    const res = await fetch('api/addOrder.php', {
+    const res = await fetch('/app/api/addOrder.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -219,7 +219,7 @@ async function checkout() {
         // Xóa sản phẩm đã mua khỏi localStorage nếu muốn
         localStorage.removeItem('productBuy');
         // Chuyển sang trang hiển thị đơn hàng
-        window.location.href = 'order-success.html?order_id=' + data.order_id;
+        window.location.href = 'order-success?order_id=' + data.order_id;
     } else {
         alert('Đặt hàng thất bại: ' + (data.message || 'Lỗi không xác định'));
     }

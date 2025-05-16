@@ -11,7 +11,7 @@ async function login(event) {
     }
 
     try {
-        const response = await fetch('./assets/api/login.php', {
+        const response = await fetch('./assets//app/api/login.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -34,7 +34,7 @@ async function login(event) {
                 localStorage.removeItem('rememberedUser');
             }
 
-            window.location.href = "index.html";
+            window.location.href = "/";
         } else {
             alert(result.message);
         }

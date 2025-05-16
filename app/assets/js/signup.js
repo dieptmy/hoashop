@@ -46,7 +46,7 @@ async function signup() {
     }
 
     try {
-        const response = await fetch('api/signup.php', {
+        const response = await fetch('/app/api/signup.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: `username=${encodeURIComponent(username)}&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&number=${encodeURIComponent(phone)}`
@@ -55,7 +55,7 @@ async function signup() {
         const data = await response.json();
         if (data.success) {
             alert('Đăng ký thành công! Vui lòng đăng nhập.');
-            window.location.href = 'login.html';
+            window.location.href = 'login';
         } else {
             alert(data.message);
         }

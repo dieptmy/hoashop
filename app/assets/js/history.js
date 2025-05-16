@@ -10,7 +10,7 @@ async function loadOrders() {
             return;
         }
 
-        const response = await fetch(`api/getOrders.php?user_id=${auth.user_id}`);
+        const response = await fetch(`/app/api/getOrders.php?user_id=${auth.user_id}`);
         // const data = await response.json();
         const text = await response.text();
         console.log("raw response: ", text);
@@ -22,6 +22,8 @@ async function loadOrders() {
         }
 
         if (data.orders.length === 0) {
+            console.log('sdfsfsdf'
+            )
             document.getElementById('orderList').innerHTML = '<div class="alert alert-info">Bạn chưa có đơn hàng nào</div>';
             return;
         }

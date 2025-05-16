@@ -3,7 +3,7 @@
 async function checkLogin(username, password) {
     try {
         // Gửi yêu cầu đăng nhập tới login.php
-        const response = await fetch('api/login.php', {
+        const response = await fetch('/app/api/login.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -69,7 +69,7 @@ async function handleLogin(event) {
     const password = document.getElementById('password').value;
     
     if (await checkLogin(username, password)) {
-        window.location.href = 'index.html';
+        window.location.href = '/';
     } else {
         alert('Sai tên đăng nhập hoặc mật khẩu');
     }

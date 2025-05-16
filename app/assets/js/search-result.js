@@ -16,7 +16,7 @@ document.addEventListener('click', function(e) {
       if (!productCard) return;
       const productId = productCard.querySelector('.add-to-cart')?.dataset.productId;
       if (!productId) return;
-      window.location.href = 'product-detail.html?id=' + productId;
+      window.location.href = 'product-detail?id=' + productId;
       console.log(productId);
   }
 });
@@ -131,7 +131,7 @@ function handleSearchResults(data) {
 (async function() {
     const params = getSearchParams();
   
-    const res = await fetch('api/searchProducts.php', {
+    const res = await fetch('/app/api/searchProducts.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(params)

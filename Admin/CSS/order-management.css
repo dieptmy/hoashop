@@ -1,0 +1,706 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    flex: 1;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 20px; /* Khoảng cách giữa avatar và menu */
+    background-color: #444; /* Màu nền cho khung avatar */
+    border-radius: 10px;
+    color: white;
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-name {
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+/* CSS cho nút đăng xuất */
+.logout-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.logout-button i {
+    margin-right: 5px;
+}
+
+.logout-button:hover {
+    background-color: #d32f2f;
+}
+
+/* CSS cho icon đăng xuất */
+.logout-icon {
+    font-size: 24px; /* Kích thước của icon */
+    cursor: pointer; /* Thay đổi con trỏ thành hình bàn tay khi hover */
+    color: #000; /* Màu sắc mặc định của icon */
+}
+
+.logout-icon:hover {
+    color: red; /* Đổi màu khi hover */
+}
+
+/* Thanh điều hướng */
+nav.navigation {
+    background-color: black;
+    width: 220px;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 30px;
+    padding-left: 10px;
+    transition: width 0.3s;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.navigation-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navigation-item {
+    margin-bottom: 15px; /* Thêm khoảng cách giữa các mục */
+}
+
+.navigation-link {
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px; /* Tăng kích thước vùng click để dễ nhìn hơn */
+    display: block;
+    transition: background-color 0.3s;
+    border-radius: 5px; /* Thêm bo góc cho mềm mại */
+}
+
+.navigation-link:hover {
+    background-color: #555;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 6px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+.footer {
+    background-color: #f4f4f4;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    margin-top: auto; /* Đẩy footer xuống dưới */
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.admin-header {
+    margin-left: 230px; /* Đẩy phần chính sang phải để không chồng lên thanh điều hướng */
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Nút đóng (dấu X) */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: white; /* Nền màu trắng */
+    border: 2px solid #f1c40f; /* Viền màu vàng */
+    border-radius: 8px; /* Bo tròn góc */
+    cursor: pointer;
+    padding: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển mượt mà */
+}
+
+.edit-btn i {
+    font-size: 15px;
+    color: #f1c40f; /* Màu vàng cho icon */
+    transition: color 0.3s; /* Hiệu ứng chuyển mượt mà cho icon */
+}
+
+.edit-btn:hover {
+    background-color: #f1c40f; /* Nền màu vàng khi hover */
+    border-color: #f1c40f; /* Viền giữ nguyên màu vàng */
+}
+
+.edit-btn:hover i {
+    color: black; /* Màu đen cho icon khi hover */
+}
+
+.order-management {
+    margin-left: 230px;
+    padding: 30px;
+    background-color: #fff;
+}
+
+/* Đặt bộ lọc theo thời gian trên cùng một dòng và căn giữa các phần tử */
+.filter-by-date {
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 10px; /* Khoảng cách giữa các phần tử */
+    margin-bottom: 20px;
+}
+
+.filter-by-date label {
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 20px; /* Đẩy label lên trên 5px */
+}
+
+.filter-by-date input,
+.filter-by-date button {
+    padding: 6px 8px;
+    font-size: 14px;
+    line-height: 1.2;
+    margin-bottom: 20px; /* Đẩy label lên trên 5px */
+}
+
+.filter-by-date button {
+    cursor: pointer;
+}
+
+/* Các nhãn và trường nhập liệu */
+label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 20px; /* Thêm khoảng cách trên */
+    font-weight: bold; /* Làm đậm các nhãn */
+}
+
+input[type="date"] {
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    padding: 10px;
+    margin-bottom: 20px; /* Khoảng cách giữa các trường */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Giảm kích thước của checkbox */
+input[type="checkbox"] {
+    width: 15px; /* Đặt chiều rộng của checkbox */
+    height: 15px; /* Đặt chiều cao của checkbox */
+    transform: scale(0.7); /* Thu nhỏ checkbox */
+    margin-right: 5px; /* Khoảng cách giữa checkbox và văn bản */
+}
+
+/* Giảm kích thước của ô chứa checkbox */
+.checkbox-column {
+    padding: 5px; /* Giảm padding chỉ cho ô chứa checkbox */
+    width: 30px; /* Giảm chiều rộng chỉ cho ô chứa checkbox */
+}
+
+.custom-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    overflow-y: auto; /* Thêm tính năng cuộn khi nội dung dài hơn chiều cao màn hình */
+}
+  
+/* Nội dung của modal */
+.custom-modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-height: 110vh; /* Giới hạn chiều cao modal */
+    border-radius: 5px;
+}
+
+.cmc-v {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50% !important;
+    max-height: 110vh; /* Giới hạn chiều cao modal */
+    border-radius: 5px;
+}
+  
+  /* Định dạng các nhóm trong form */
+.custom-form-group {
+    margin-bottom: 15px;
+}
+  
+/* Các định dạng input và select */
+.custom-form-group input[type="text"],
+.custom-form-group input[type="date"],
+.custom-form-group textarea,
+.custom-form-group 
+{
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+  
+/* Định dạng hàng chứa nhiều nhóm input */
+.custom-form-row {
+    display: flex;
+    justify-content: space-between;
+}
+  
+/* Các input trong form theo hàng */
+.custom-form-row .custom-form-group {
+    width: 48%;
+}
+  
+/* Định dạng nút */
+.custom-save-button,
+.custom-close-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+  
+.custom-save-button {
+    background-color: #28a745;
+    color: white;
+}
+  
+.custom-close-button {
+    background-color: #dc3545;
+    color: white;
+}
+  
+.custom-close-button,
+.custom-save-button {
+    margin-right: 10px;
+}
+
+/* Xếp hàng các nhóm trong cùng một dòng */
+.custom-form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Tăng khoảng cách giữa các input */
+}
+
+input[type="text"], input[type="number"], textarea, select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+td .pa {
+    width: 450px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center !important;
+    align-items: center !important;
+}
+
+.cancel {
+    display: inline-block;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: white;
+    margin: 5px;
+    background-color: #e53935; /* Màu đỏ */
+}
+.complete {
+    display: inline-block;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: white;
+    margin: 5px;
+    background-color: #43a047; /* Màu xanh lá */
+}
+.pending {
+    display: inline-block;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: white;
+    margin: 5px;
+    background-color: #fdd835; /* Màu vàng */
+    color: black;
+}
+
+.delivering {
+    display: inline-block;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: white;
+    margin: 5px;
+    background-color: #0056b3;
+}
+
+@media (max-width: 1354px) {
+    .navigation {
+        display: none;
+    }
+    .admin-header {
+        margin-left: 0px;
+    }
+    .order-management {
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 1130px) {
+    #filteredTable th, 
+    #orderTable th, 
+    #productTable th, 
+    #pendingOrders th, 
+    #deliveredOrders th, 
+    #cancelledOrders th {
+        font-size: 14px;
+    }
+    #filteredTable td, 
+    #orderTable td, 
+    #productTable td, 
+    #pendingOrders td, 
+    #deliveredOrders td, 
+    #cancelledOrders td {
+        font-size: 13px;
+    }
+    .edit-btn i {
+        font-size: 14px;
+    }
+    .custom-form-group {
+        margin-top: -2%;
+    }
+}
+
+@media (max-width: 1090px) {
+    #filteredTable th, 
+    #orderTable th, 
+    #productTable th, 
+    #pendingOrders th, 
+    #deliveredOrders th, 
+    #cancelledOrders th {
+        font-size: 13px;
+    }
+    #filteredTable td, 
+    #orderTable td, 
+    #productTable td, 
+    #pendingOrders td, 
+    #deliveredOrders td, 
+    #cancelledOrders td {
+        font-size: 12px;
+    }
+    .edit-btn i {
+        font-size: 13px;
+    }
+    .custom-form-group {
+        margin-top: -3%;
+    }
+    .custom-form-row {
+        gap: 1px;
+    }
+    td .pa {
+        width: 300px;
+    }
+    input[type="checkbox"] {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 860px) {
+    #filteredTable th, 
+    #orderTable th, 
+    #productTable th, 
+    #pendingOrders th, 
+    #deliveredOrders th, 
+    #cancelledOrders th {
+        font-size: 12px;
+    }
+    #filteredTable td, 
+    #orderTable td, 
+    #productTable td, 
+    #pendingOrders td, 
+    #deliveredOrders td, 
+    #cancelledOrders td {
+        font-size: 11px;
+    }
+    .edit-btn i {
+        font-size: 12px;
+    }
+    .custom-form-group {
+        margin-top: -4%;
+    }
+    td .pa {
+        width: 250px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    label {
+        font-size: 14px;
+    }
+    input, select {
+        font-size: 13px;
+    }
+    .cancel,
+    .complete,
+    .delivering,
+    .pending {
+        font-size: 10px;
+    }
+    input[type="checkbox"] {
+        width: 13px;
+        height: 13px;
+    }
+}
+
+@media (max-width: 750px) {
+    #filteredTable th, 
+    #orderTable th, 
+    #productTable th, 
+    #pendingOrders th, 
+    #deliveredOrders th, 
+    #cancelledOrders th {
+        font-size: 10px;
+    }
+    #filteredTable td, 
+    #orderTable td, 
+    #productTable td, 
+    #pendingOrders td, 
+    #deliveredOrders td, 
+    #cancelledOrders td {
+        font-size: 9px;
+    }
+    .edit-btn i {
+        font-size: 10px;
+    }
+    .custom-form-group {
+        margin-top: -5%;
+    }
+    td .pa {
+        width: 200px;
+    }
+    h2 {
+        font-size: 18px;
+    }
+    label {
+        font-size: 12px;
+    }
+    input, select {
+        font-size: 11px;
+    }
+    .cancel,
+    .complete,
+    .delivering,
+    .pending {
+        font-size: 8px;
+    }
+    input[type="checkbox"] {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+@media (max-width: 650px) {
+    #filteredTable th, 
+    #orderTable th, 
+    #productTable th, 
+    #pendingOrders th, 
+    #deliveredOrders th, 
+    #cancelledOrders th {
+        font-size: 9px;
+    }
+    #filteredTable td, 
+    #orderTable td, 
+    #productTable td, 
+    #pendingOrders td, 
+    #deliveredOrders td, 
+    #cancelledOrders td {
+        font-size: 8px;
+    }
+    .edit-btn i {
+        font-size: 9px;
+    }
+    .custom-form-group {
+        margin-top: -5%;
+    }
+    td .pa {
+        width: 120px;
+    }
+    h2 {
+        font-size: 17px;
+    }
+    label {
+        font-size: 11px;
+    }
+    input, select {
+        font-size: 10px;
+    }
+    .cancel,
+    .complete,
+    .delivering,
+    .pending {
+        font-size: 8px;
+    }
+    input[type="checkbox"] {
+        width: 11px;
+        height: 11px;
+    }
+}
+
+@media (max-width: 600px) {
+    #filteredTable th, 
+    #orderTable th, 
+    #productTable th, 
+    #pendingOrders th, 
+    #deliveredOrders th, 
+    #cancelledOrders th {
+        font-size: 9px;
+    }
+    #filteredTable td, 
+    #orderTable td, 
+    #productTable td, 
+    #pendingOrders td, 
+    #deliveredOrders td, 
+    #cancelledOrders td {
+        font-size: 8px;
+    }
+    .edit-btn i {
+        font-size: 9px;
+    }
+    .custom-form-group {
+        margin-top: -5%;
+    }
+    td .pa {
+        width: 100px;
+    }
+    h2 {
+        font-size: 17px;
+    }
+    label {
+        font-size: 8px;
+    }
+    input, select {
+        font-size: 8px;
+    }
+    .cancel,
+    .complete,
+    .delivering,
+    .pending {
+        font-size: 8px;
+    }
+    input[type="checkbox"] {
+        width: 11px;
+        height: 11px;
+    }
+}
+
+@media (max-width: 510px) {
+    #filteredTable th, 
+    #orderTable th, 
+    #productTable th, 
+    #pendingOrders th, 
+    #deliveredOrders th, 
+    #cancelledOrders th {
+        font-size: 9px;
+    }
+    #filteredTable td, 
+    #orderTable td, 
+    #productTable td, 
+    #pendingOrders td, 
+    #deliveredOrders td, 
+    #cancelledOrders td {
+        font-size: 8px;
+    }
+    .edit-btn i {
+        font-size: 9px;
+    }
+    .custom-form-group {
+        margin-top: -5%;
+    }
+    td .pa {
+        width: 90px;
+    }
+    h2 {
+        font-size: 17px;
+    }
+    label {
+        font-size: 11px;
+    }
+    input, select {
+        font-size: 10px;
+    }
+    .cancel,
+    .complete,
+    .delivering,
+    .pending {
+        font-size: 8px;
+    }
+    input[type="checkbox"] {
+        width: 11px;
+        height: 11px;
+    }
+}

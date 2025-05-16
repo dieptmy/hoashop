@@ -19,7 +19,18 @@
     justify-content: space-between;
     align-items: center;
 }  */
-
+.no-wrap {
+        background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+}
+.no-wrap .container{
+    max-width: 400px;
+    padding: 0 15px;
+}
 .grid {
     height: 100%;
 }

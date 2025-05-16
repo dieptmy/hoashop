@@ -146,7 +146,7 @@ async function renderCart() {
                 <div class="cart-item">
                     <input type="checkbox" class="item-checkbox" data-index="${index}" onchange="updateTotal()">
                     <div class="item-image">
-                        <img src="${image}" alt="${item.name}" onerror="this.src='assets/images/default-product.jpg'">
+                        <img src="/app/${image}" alt="${item.name}" onerror="this.src='/app/assets/images/default-product.jpg'">
                     </div>
                     <div class="item-details">
                         <div class="item-name">${item.name}</div>
@@ -192,7 +192,7 @@ async function updateQuantity(volume_product_id, currentQuantity, change) {
 
     try {
         // Gửi cập nhật lên server
-        await fetch('api/updateCart.php', {
+        await fetch('/app/api/updateCart.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -218,13 +218,13 @@ async function removeItem(volume_product_id) {
     const user_id = getCurrentUserId();
     if (!username) {
         alert('Vui lòng đăng nhập để thực hiện chức năng này');
-        window.location.href = 'login.html';
+        window.location.href = 'login';
         return;
     }
 
     try {
         // Gửi yêu cầu xóa lên server (quantity = 0)
-        await fetch('api/updateCart.php', {
+        await fetch('/app/api/updateCart.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -250,7 +250,7 @@ async function addToCart(product) {
         }
 
         // Gửi cập nhật lên server
-        await fetch('api/updateCart.php', {
+        await fetch('/app/api/updateCart.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -315,10 +315,10 @@ if(btnCheckout) {
         // 3. Kiểm tra thông tin user
         const auth = JSON.parse(localStorage.getItem('auth') || '{}');
         if (auth.fullname && auth.address && auth.district && auth.city && auth.number) {
-            window.location.href = 'checkout.html';
+            window.location.href = 'checkout';
         } else {
             showUserInfoModal(function(userInfo) {
-                fetch('api/updateUser.php', {
+                fetch('/app/api/updateUser.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -331,7 +331,7 @@ if(btnCheckout) {
                     if (data.success) {
                         Object.assign(auth, userInfo);
                         localStorage.setItem('auth', JSON.stringify(auth));
-                        window.location.href = 'checkout.html';
+                        window.location.href = 'checkout';
                     } else {
                         alert('Cập nhật thông tin thất bại!');
                     }

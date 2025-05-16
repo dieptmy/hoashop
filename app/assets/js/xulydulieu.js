@@ -154,7 +154,7 @@ function renderAllProduct() {
     }
 
     document.getElementById('viewAllBtn').onclick = function() {
-        window.location.href = 'allProduct-page1.html';
+        window.location.href = 'product-list';
     };
 }
 
@@ -588,7 +588,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         console.log('Gửi lên API:', { product_id: productId, volume_id: volumeId });
         try {
-            const response = await fetch('api/getVolumeProductId.php', {
+            const response = await fetch('/app/api/getVolumeProductId.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -650,7 +650,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         console.log('Gửi lên API:', { product_id: productId, volume_id: volumeId });
         try {
-            const response = await fetch('api/getVolumeProductId.php', {
+            const response = await fetch('/app/api/getVolumeProductId.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -667,7 +667,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error(data.message);
             }
 
-            const res = await fetch('api/product-detail.php?id=' + data.volume_product_id);
+            const res = await fetch('/app/api/product-detail.php?id=' + data.volume_product_id);
             const dataProduct = await res.json();
             const price = dataProduct.product.price;
 
@@ -686,7 +686,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const auth = localStorage.getItem('auth');
             if (!auth) {
                 alert('Vui lòng đăng nhập để mua hàng!');
-                window.location.href = 'login.html';
+                window.location.href = 'login';
                 return;
             }
             const user = JSON.parse(auth);
@@ -694,12 +694,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // Kiểm tra thông tin user
             if (user.fullname && user.address && user.district && user.city) {
                 
-                window.location.href = 'checkout.html';
+                window.location.href = 'checkout';
             } else {
                 // Hiện modal nhập thông tin    
                 showUserInfoModal(async function(userInfo) {
-                    // Gửi thông tin lên server (giả sử có api/updateUser.php)
-                    const response = await fetch('api/updateUser.php', {
+                    // Gửi thông tin lên server (giả sử có /app/api/updateUser.php)
+                    const response = await fetch('/app/api/updateUser.php', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
@@ -720,7 +720,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         // localStorage.setItem('checkoutProductVolumeId', productVolumeId);
                         // const quantity = JSON.parse(product).quantity;
                         // localStorage.setItem('checkoutProductQuantity', quantity);
-                        window.location.href = 'checkout.html';
+                        window.location.href = 'checkout';
                     } else {
                         alert('Cập nhật thông tin thất bại!');
                     }
@@ -984,7 +984,7 @@ async function addToCart(product) {
         const auth = localStorage.getItem('auth');
         if (!auth) {
             alert('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng');
-            window.location.href = 'login.html';
+            window.location.href = 'login';
             return;
         }
 
@@ -992,7 +992,7 @@ async function addToCart(product) {
         if (!userData || !userData.username) {
             alert('Phiên đăng nhập không hợp lệ. Vui lòng đăng nhập lại');
             localStorage.removeItem('auth');
-            window.location.href = 'login.html';
+            window.location.href = 'login';
             return;
         }
 
@@ -1062,7 +1062,7 @@ async function addToCart(product) {
         console.log('Gửi lên updateCart:', serverData);
 
         try {
-            const updateResponse = await fetch('api/updateCart.php', {
+            const updateResponse = await fetch('/app/api/updateCart.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -1153,7 +1153,7 @@ function showUserInfoModal(onSubmit) {
     modalDistrict.innerHTML = '<option value="">Chọn quận/huyện</option>';
 
     // Load danh sách thành phố
-    fetch('api/getCities.php')
+    fetch('/app/api/getCities.php')
         .then(res => res.json())
         .then(data => {
             if (data.success) {
@@ -1190,7 +1190,7 @@ function showUserInfoModal(onSubmit) {
     function loadDistrictsForModal(cityId, selectedDistrict = '') {
         modalDistrict.innerHTML = '<option value="">Chọn quận/huyện</option>';
         if (!cityId) return;
-        fetch('api/getDistricts.php?city_id=' + cityId)
+        fetch('/app/api/getDistricts.php?city_id=' + cityId)
             .then(res => res.json())
             .then(data => {
                 if (data.success) {

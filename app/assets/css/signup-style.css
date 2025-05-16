@@ -1,17 +1,4 @@
-body {
-    background-color: #f5f5f5;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Roboto', sans-serif;
-}
 
-.container {
-    width: 100%;
-    max-width: 400px;
-    padding: 0 15px;
-}
 
 .signup-container {
     background: #fff;
@@ -20,7 +7,7 @@ body {
     box-shadow: 0 8px 24px rgba(149, 157, 165, 0.2);
 }
 
-h2 {
+.signup-container h2 {
     color: #333;
     font-size: 28px;
     font-weight: 500;
@@ -28,7 +15,7 @@ h2 {
     margin-bottom: 35px;
 }
 
-.form-control {
+.signup-container .form-control {
     background: #fff;
     border: none;
     border-radius: 50px;
@@ -40,46 +27,46 @@ h2 {
     transition: all 0.3s ease;
 }
 
-.form-control:focus {
+.signup-container .form-control:focus {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     outline: none;
 }
 
 /* Validation styles */
-.form-control.is-invalid {
+.signup-container .form-control.is-invalid {
     border: 1px solid #dc3545;
     box-shadow: 0 2px 8px rgba(220, 53, 69, 0.1);
 }
 
-.form-control.is-valid {
+.signup-container .form-control.is-valid {
     border: 1px solid #198754;
     box-shadow: 0 2px 8px rgba(25, 135, 84, 0.1);
 }
 
-.form-control.is-invalid:focus {
+.signup-container .form-control.is-invalid:focus {
     box-shadow: 0 2px 8px rgba(220, 53, 69, 0.2);
 }
 
-.form-control.is-valid:focus {
+.signup-container .form-control.is-valid:focus {
     box-shadow: 0 2px 8px rgba(25, 135, 84, 0.2);
 }
 
-.form-check {
+.signup-container .form-check {
     margin: 15px 0 25px;
 }
 
-.form-check-input {
+.signup-container .form-check-input {
     cursor: pointer;
     margin-right: 8px;
 }
 
-.form-check-label {
+.signup-container .form-check-label {
     color: #666;
     cursor: pointer;
     font-size: 14px;
 }
 
-.btn-signup {
+.signup-container .btn-signup {
     background-color: #333;
     border: none;
     border-radius: 50px;
@@ -93,24 +80,24 @@ h2 {
     transition: all 0.3s ease;
 }
 
-.btn-signup:hover {
+.signup-container .btn-signup:hover {
     background-color: #222;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     color: #fff;
 }
 
-.login-text {
+.signup-container .login-text {
     text-align: center;
     color: #666;
     font-size: 14px;
 }
 
-.login-text a {
+.signup-container .login-text a {
     color: #333;
     text-decoration: none;
     font-weight: 500;
 }
 
-.login-text a:hover {
+.signup-container .login-text a:hover {
     text-decoration: underline;
 } 

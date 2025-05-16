@@ -2368,7 +2368,7 @@
 		} else if (video.type === 'vimeo') {
 			$.ajax({
 				type: 'GET',
-				url: '//vimeo.com/api/v2/video/' + video.id + '.json',
+				url: '//vimeo.com//app/api/v2/video/' + video.id + '.json',
 				jsonp: 'callback',
 				dataType: 'jsonp',
 				success: function(data) {
@@ -2379,7 +2379,7 @@
 		} else if (video.type === 'vzaar') {
 			$.ajax({
 				type: 'GET',
-				url: '//vzaar.com/api/videos/' + video.id + '.json',
+				url: '//vzaar.com//app/api/videos/' + video.id + '.json',
 				jsonp: 'callback',
 				dataType: 'jsonp',
 				success: function(data) {

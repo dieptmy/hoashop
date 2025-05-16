@@ -36,7 +36,7 @@ document.getElementById('basicSearchForm').onsubmit = function(e) {
     const keyword = document.getElementById('basicSearchInput').value.trim();
     if (!keyword) return;
     // Chuyển hướng sang trang kết quả
-    window.location.href = `search-result.html?keyword=${encodeURIComponent(keyword)}`;
+    window.location.href = `search-result?keyword=${encodeURIComponent(keyword)}`;
 };
 
 // Tìm kiếm nâng cao
@@ -54,13 +54,13 @@ document.getElementById('advancedSearchForm').onsubmit = function(e) {
         .filter(key => params[key])
         .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
         .join('&');
-    window.location.href = `search-result.html?${query}`;
+    window.location.href = `search-result?${query}`;
 };
 
 // Hàm tìm kiếm sản phẩm và hiển thị kết quả
 async function searchProducts(params) {
     
-    const res = await fetch('api/searchProducts.php', {
+    const res = await fetch('/app/api/searchProducts.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(params)
