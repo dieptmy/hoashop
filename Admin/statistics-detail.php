@@ -1,6 +1,6 @@
 <?php
 include 'includes/header.php';
-require_once 'includes/db.php';
+require_once dirname( __FILE__ ) . '/../config/db.php';
 
 if (!isset($_GET['user_ID'], $_GET['start'], $_GET['end'])) {
     echo '<div class="container py-5"><div class="alert alert-danger">Thiếu thông tin truy vấn.</div></div>';

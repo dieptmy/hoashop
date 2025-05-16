@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require_once 'connect.php';
+require_once dirname( __FILE__ ) . '/../../config/db.php';
 
 $product_id = $_GET['product_id'] ?? null;
 $volume = $_GET['volume'] ?? null;

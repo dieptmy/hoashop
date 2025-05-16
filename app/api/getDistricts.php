@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 session_start();
-include 'connect.php';
+require_once dirname( __FILE__ ) . '/../../config/db.php';
 
 $city_id = $_GET['city_id'] ?? 0;
 

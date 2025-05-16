@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 session_start();
-include 'connect.php';
+require_once dirname( __FILE__ ) . '/../../config/db.php';
 
 if (!isset($_SESSION['user_id'])) {
     echo json_encode([

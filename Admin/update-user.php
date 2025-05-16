@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/db.php';
+require_once dirname( __FILE__ ) . '/../config/db.php';
 session_start();
 
 $currentUserId = $_SESSION['user_id'] ?? 0;

@@ -1,6 +1,6 @@
 <?php
 include 'includes/header.php';
-require_once 'includes/db.php';
+require_once dirname( __FILE__ ) . '/../config/db.php';
 
 // ✅ Toast: Cập nhật đơn hàng thành công
 if (isset($_GET['success']) && $_GET['success'] == 1) {

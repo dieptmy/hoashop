@@ -1,4 +1,6 @@
 <?php 
+
+require_once dirname( __FILE__ ) . '/config/db.php';
     $input = $_GET;
     $path = 'home';
     if(!empty($input['path'])) {

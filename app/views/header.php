@@ -1,3 +1,10 @@
+<?php
+
+$errorFields = [];
+
+$categoryQuery = $conn->query("SELECT * FROM category ORDER BY id ASC");
+$categories = $categoryQuery->fetch_all(MYSQLI_ASSOC);
+?>
 <header class="header">
     <div class="header__first">
         <div class="container">
@@ -24,12 +31,11 @@
                                         <div class="dropdown">
                                             <a class="dropdown-toggle" href="#">Phân loại</a>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" href="/product-list?id=1">Nam</a></li>
-                                                <li><a class="dropdown-item" href="/product-list?id=2">Nữ</a></li>
-                                                <li><a class="dropdown-item" href="/product-list?id=3">Unisex</a></li>
-                                                <li><a class="dropdown-item" href="/product-list?id=4">Gucci</a></li>
-                                                <li><a class="dropdown-item" href="/product-list?id=5">Chanel</a></li>
-                                                <li><a class="dropdown-item" href="/product-list?id=6">Burberry</a></li>
+                                                <?php 
+                                                    foreach($categories as $category) {
+                                                        echo '<li><a class="dropdown-item" href="/product-list?id='. $category['id'].'"> ' . $category['name'] .'</a></li>';
+                                                    }
+                                                ?>
                                             </ul>
                                         </div>
                                     </li>
@@ -59,12 +65,12 @@
                                         <div class="col-md-3">
                                             <select id="categorySelect" class="form-select">
                                                 <option value="">Phân loại</option>
-                                                <option value="1">Nam</option>
-                                                <option value="2">Nữ</option>
-                                                <option value="3">Unisex</option>
-                                                <option value="4">Chanel</option>
-                                                <option value="5">Gucci</option>
-                                                <option value="6">Burberry</option>  
+                                                 <?php 
+                                                    foreach($categories as $category) {
+                                                        echo '<option value="'. $category['id'] .'">' . $category['name'] .'</option>';
+                                                    }
+                                                ?>
+                    
                                             </select>
                                         </div>
                                         <div class="col-md-3 d-flex align-items-center">
@@ -149,36 +155,15 @@ width: 100%;">
                             <i class="header__second-navbar-link-icon bi bi-chevron-compact-down"></i>
                             <div class="header__second-navbarsub ">
                                 <ul>
-                                    <li>
-                                        <a href="/product-list?id=1" class="disabled">
-                                            <p>Nam</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/product-list?id=2" class="disabled">
-                                            <p>Nữ</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/product-list?id=3" class="disabled">
-                                            <p>Unisex</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/product-list?id=4" class="disabled">
-                                            <p>Chanel</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/product-list?id=5" class="disabled">
-                                            <p>Gucci</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/product-list?id=6" class="disabled">
-                                            <p>Burberry</p>
-                                        </a>
-                                    </li>
+                                    <?php 
+                                    foreach($categories as $category) {
+                                        echo '<li>
+                                            <a href="/product-list?id='. $category['id'] .'" class="disabled">
+                                                <p>'. $category['name'] .'</p>
+                                            </a>
+                                        </li>';
+                                    }
+                                    ?>
                                 </ul>
                             </div>
                     </a>

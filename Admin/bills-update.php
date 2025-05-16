@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/db.php';
+require_once dirname( __FILE__ ) . '/../config/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $orderID = (int)$_POST['id'];

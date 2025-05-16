@@ -1,6 +1,6 @@
 <?php
 include 'includes/header.php';
-require_once 'includes/db.php';
+require_once dirname( __FILE__ ) . '/../config/db.php';
 
 $limit = 5;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;

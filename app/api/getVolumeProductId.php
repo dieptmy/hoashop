@@ -1,5 +1,5 @@
 <?php
-require_once 'connect.php';
+require_once dirname( __FILE__ ) . '/../../config/db.php';
 
 header('Content-Type: application/json');
 

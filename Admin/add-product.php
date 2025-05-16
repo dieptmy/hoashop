@@ -1,12 +1,15 @@
 <?php
 include 'includes/header.php';
-require_once 'includes/db.php';
+require_once dirname( __FILE__ ) . '/../config/db.php';
 
 $errorFields = [];
 
 // Lấy danh sách thể tích
 $volumeQuery = $conn->query("SELECT * FROM volume ORDER BY value ASC");
 $volumes = $volumeQuery->fetch_all(MYSQLI_ASSOC);
+
+$categoryQuery = $conn->query("SELECT * FROM category ORDER BY id ASC");
+$categories = $categoryQuery->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <div class="container py-5">
@@ -23,9 +26,9 @@ $volumes = $volumeQuery->fetch_all(MYSQLI_ASSOC);
                     <div class="col-md-6">
                         <label class="form-label">Danh mục</label>
                         <select name="category_id" class="form-select" required>
-                            <option value="1">Nam</option>
-                            <option value="2">Nữ</option>
-                            <option value="3">Unisex</option>
+                            <?php foreach($categories as $category) {
+                                echo ' <option value="' .  $category['id'] .'">' . $category['name']. '</option>';
+                            } ?>
                         </select>
                     </div>
 

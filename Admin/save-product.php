@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/db.php';
+require_once dirname( __FILE__ ) . '/../config/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['product_name'];
@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $imageUrf = null;
 
     // Xử lý ảnh
-    $uploadDir = __DIR__ . '/../End-user/images/';
+    $uploadDir = __DIR__ . '/../app/images/';
     if (!is_dir($uploadDir)) {
         mkdir($uploadDir, 0755, true);
     }
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $targetPath = $uploadDir . $newFileName;
 
         if (move_uploaded_file($tmpName, $targetPath)) {
-            $imageUrf = 'End-user/images/' . $newFileName;
+            $imageUrf = 'images/' . $newFileName;
         } else {
             echo "❌ Không thể lưu ảnh vào $targetPath";
             exit;
@@ -39,7 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Thêm giá theo volume
     foreach ($volumePrices as $volumeId => $price) {
-        if (!empty($price) && is_numeric($price)) {
+        if (!empty($price)) {
+            $price = (int)$price;
             $availableQty = 20; // mặc định
             $stmt = $conn->prepare("INSERT INTO volume_product (product_id, volume_id, available_qty, price) VALUES (?, ?, ?, ?)");
             $stmt->bind_param("iiii", $productId, $volumeId, $availableQty, $price);

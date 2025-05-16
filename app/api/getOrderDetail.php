@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require_once 'connect.php';
+require_once dirname( __FILE__ ) . '/../../config/db.php';
 
 $order_id = $_GET['order_id'] ?? 0;
 if (!$order_id) {

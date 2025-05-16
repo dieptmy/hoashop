@@ -1,6 +1,6 @@
 <?php
 include 'includes/header.php';
-require_once 'includes/db.php';
+require_once dirname( __FILE__ ) . '/../config/db.php';
 
 $id = $_GET['id'] ?? 0;
 
@@ -23,6 +23,9 @@ $volumeStmt->execute();
 $volumeResult = $volumeStmt->get_result();
 $volumes = $volumeResult->fetch_all(MYSQLI_ASSOC);
 $volumeStmt->close();
+
+$categoryQuery = $conn->query("SELECT * FROM category ORDER BY id ASC");
+$categories = $categoryQuery->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <div class="container py-5">
@@ -40,9 +43,9 @@ $volumeStmt->close();
                     <div class="col-md-6">
                         <label class="form-label">Danh mục</label>
                         <select name="category_id" class="form-select">
-                            <option value="1" <?= $product['category_id'] == 1 ? 'selected' : '' ?>>Nam</option>
-                            <option value="2" <?= $product['category_id'] == 2 ? 'selected' : '' ?>>Nữ</option>
-                            <option value="3" <?= $product['category_id'] == 3 ? 'selected' : '' ?>>Unisex</option>
+                            <?php foreach($categories as $category) {
+                                echo ' <option value="' .  $category['id'] .'">' . $category['name']. '</option>';
+                            } ?>
                         </select>
                     </div>
 

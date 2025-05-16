@@ -1,8 +1,8 @@
 <?php
 header('Content-Type: application/json');
 session_start(); //Khởi tạo session
-
-include 'connect.php'; // Kết nối CSDL, trả về biến $conn
+require_once dirname( __FILE__ ) . '/../../config/db.php';
+ // Kết nối CSDL, trả về biến $conn
 
 $username = trim($_POST['username']) ?? '';
 $password = $_POST['password'] ?? '';

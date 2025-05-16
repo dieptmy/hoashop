@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require_once 'connect.php';
+require_once dirname( __FILE__ ) . '/../../config/db.php';
 
 try {
     $data = json_decode(file_get_contents('php://input'), true);

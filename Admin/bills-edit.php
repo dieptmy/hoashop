@@ -1,6 +1,6 @@
 <?php
 include 'includes/header.php';
-require_once 'includes/db.php';
+require_once dirname( __FILE__ ) . '/../config/db.php';
 
 // Lấy ID đơn hàng từ URL
 $orderID = isset($_GET['id']) ? (int)$_GET['id'] : 0;

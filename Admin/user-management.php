@@ -1,6 +1,6 @@
 <?php
 include 'includes/header.php';
-require_once 'includes/db.php';
+require_once dirname( __FILE__ ) . '/../config/db.php';
 
 $currentRole = $_SESSION['user_role'] ?? 'user';
 $userId = $_SESSION['user_id'] ?? 0;

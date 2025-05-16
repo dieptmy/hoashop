@@ -1,6 +1,6 @@
 <?php
 include 'includes/header.php';
-require_once 'includes/db.php';
+require_once dirname( __FILE__ ) . '/../config/db.php';
 
 $limit = 8;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -71,11 +71,12 @@ $result = $conn->query($sql);
                                     <td><?= $row['product_ID'] ?></td>
                                     <td>
                                         <?php
-                                            $imageFullPath = '../app/' . $row['image_url'];
-                                            $imagePath = (!empty($row['image_url']) && file_exists($imageFullPath))
+                                            $imageFullPath = '/app/' . $row['image_url'];
+                                            $imagePath = (!empty($row['image_url']))
                                                 ? '/app/' . ltrim($row['image_url'], '/')
                                                 : '/app/images/no-image.jpg';
                                         ?>
+                                    
                                         <img src="<?= htmlspecialchars($imagePath) ?>" alt="Ảnh sản phẩm" width="80" height="80" class="rounded">
                                     </td>
                                     <td class="text-start"><?= htmlspecialchars($row['product_name']) ?></td>

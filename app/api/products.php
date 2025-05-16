@@ -1,6 +1,7 @@
 <?php
+
+require_once dirname( __FILE__ ) . '/../../config/db.php';
 header('Content-Type: application/json');
-require_once 'connect.php';
 
 // Nhận tham số từ URL
 $categoryId = $_GET['category_id'] ?? null;

@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require_once 'connect.php';
+require_once dirname( __FILE__ ) . '/../../config/db.php';
 
 try {
     $user_id = $_GET['user_id'] ?? 0;
