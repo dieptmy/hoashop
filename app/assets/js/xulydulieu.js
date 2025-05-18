@@ -218,9 +218,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const productId = addToCartBtn.dataset.productId;
         const dataProduct = productItems.find(product => product.id == productId);
         if (!dataProduct) return;
-
-
-
         try {
 
 
@@ -299,6 +296,31 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
+        let mlDropdown = '';
+        dataProduct.volumes.forEach((v, index) => {
+            mlDropdown += `<button class="ml-option-buy-now ${index == dataProduct.volumes.length - 1 ? 'selected':'' }" data-ml="${v.volume_name}" > ${v.volume_name}ml</button>`
+        })
+        document.getElementById('wrap-ml-option-buy-now').innerHTML = mlDropdown;
+                
+        document.querySelectorAll('.ml-option-buy-now').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.ml-option-buy-now').forEach(btn => btn.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                // Cập nhật giá của modal thêm vào giỏ hàng
+                const modalContentBuyNow = document.querySelector('.modal-content-buy-now');
+                const volumeBuyNow = parseInt(this.dataset.ml);
+                const p = document.getElementById('product-card-info').value;
+                const pData = JSON.parse(p);
+                const basePriceBuyNow = pData.volumes.find(v => v.volume_name == volumeBuyNow);
+                modalContentBuyNow.dataset.basePrice = basePriceBuyNow.price;
+                const quantityBuyNow = parseInt(document.querySelector('.quantity-input-buy-now').value);
+                
+                updateModalPrice(basePriceBuyNow.price, volumeBuyNow, quantityBuyNow);
+
+            });
+        });
+
         // Lưu productId vào modal
         const modalContentBuyNow = document.querySelector('.modal-content-buy-now');
         modalContentBuyNow.dataset.productId = productId;
@@ -313,8 +335,8 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('modalProductImageBuyNow').src = productImage;
 
         // Reset selection
-        document.querySelectorAll('.ml-option-buy-now').forEach(btn => btn.classList.remove('selected'));
-        document.querySelector('.ml-option-buy-now[data-ml="100"]').classList.add('selected');
+        //document.querySelectorAll('.ml-option-buy-now').forEach(btn => btn.classList.remove('selected'));
+        //document.querySelector('.ml-option-buy-now[data-ml="100"]').classList.add('selected');
         document.querySelector('.quantity-input-buy-now').value = 1;
 
         //Cập nhật giá ban đầu
@@ -529,25 +551,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const quantity = parseInt(document.querySelector('.quantity-input').value);
             modalContent.dataset.basePrice = basePrice.price;
             updateModalPrice(basePrice.price, volume, quantity);
-
-        });
-    });
-
-    document.querySelectorAll('.ml-option-buy-now').forEach(button => {
-        button.addEventListener('click', function() {
-            document.querySelectorAll('.ml-option-buy-now').forEach(btn => btn.classList.remove('selected'));
-            this.classList.add('selected');
-            
-            // Cập nhật giá của modal thêm vào giỏ hàng
-            const modalContentBuyNow = document.querySelector('.modal-content-buy-now');
-            const volumeBuyNow = parseInt(this.dataset.ml);
-            const p = document.getElementById('product-card-info').value;
-            const pData = JSON.parse(p);
-            const basePriceBuyNow = pData.volumes.find(v => v.volume_name == volumeBuyNow);
-            modalContentBuyNow.dataset.basePrice = basePriceBuyNow.price;
-            const quantityBuyNow = parseInt(document.querySelector('.quantity-input-buy-now').value);
-            
-            updateModalPrice(basePriceBuyNow.price, volumeBuyNow, quantityBuyNow);
 
         });
     });
