@@ -1,6 +1,6 @@
+    <input type="hidden" id="product-card-info" data-product="" />
     <div id="addToCartModal" class="modal">
         <div class="modal-content modal-content-cart">
-            <input type="hidden" id="product-card-info" data-product="" />
             <span class="close-modal">&times;</span>
             <h2>Thêm vào giỏ hàng</h2>
             <div class="product-info">
@@ -16,6 +16,7 @@
             <div class="options">
                 <p>Dung tích:</p>
                 <div class="ml-options">
+                    
                     <button class="ml-option" data-ml="10">10ml</button>
                     <button class="ml-option" data-ml="30">30ml</button>
                     <button class="ml-option" data-ml="50">50ml</button>
@@ -43,6 +44,7 @@
 
     <div id="buyNowModal" class="modal-buy-now">
         <div class="modal-content-buy-now">
+            <input type="hidden" id="product-card-buy-info" data-product="" />
             <span class="close-modal-buy-now">&times;</span>
             <h2>Mua ngay</h2>
             <div class="product-info-buy-now">

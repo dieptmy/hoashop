@@ -895,39 +895,39 @@
     max-width: calc(50% - 4px);
 }
 
-.bestseller .btnbox .add-to-cart-bestseller,
-.allProduct .btnbox .add-to-cart-bestseller {
+.bestseller .btnbox .add-to-cart,
+.allProduct .btnbox .add-to-cart {
     background-color: #f5f5f5;
     border-color: #666;
     color: #333;
 }
 
-.bestseller .btnbox .add-to-cart-bestseller:hover,
-.allProduct .btnbox .add-to-cart-bestseller:hover {
+.bestseller .btnbox .add-to-cart:hover,
+.allProduct .btnbox .add-to-cart:hover {
     background-color: #666;
     color: white;
 }
 
-.bestseller .btnbox .add-to-cart-bestseller:active,
-.allProduct .btnbox .add-to-cart-bestseller:active {
+.bestseller .btnbox .add-to-cart:active,
+.allProduct .btnbox .add-to-cart:active {
     background-color: #444;
 }
 
-.bestseller .btnbox .btn-buy,
-.allProduct .btnbox .btn-buy {
+.bestseller .btnbox .buy-now,
+.allProduct .btnbox .buy-now {
     background-color: white;
     color: brown;
     border-color: brown;
 }
 
-.bestseller .btnbox .btn-buy:hover,
-.allProduct .btnbox .btn-buy:hover {
+.bestseller .btnbox .buy-now:hover,
+.allProduct .btnbox .buy-now:hover {
     background-color: brown;
     color: white;
 }
 
-.bestseller .btnbox .btn-buy:active,
-.allProduct .btnbox .btn-buy:active {
+.bestseller .btnbox .buy-now:active,
+.allProduct .btnbox .buy-now:active {
     background-color: #8b0000;
 }
 

@@ -16,7 +16,7 @@ $stmt = $conn->prepare("SELECT p.*, c.id AS category, MIN(vp.price) as minPrice,
                                     ',\"volume_name\":\"', REPLACE(v.value, '\"', '\\\"'),
                                     '\",\"price\":', vp.price,
                                     '}'
-                                )
+                                ) ORDER BY v.id
                             ), ']') AS volumes
                         FROM products p
                         JOIN volume_product vp ON vp.product_id = p.id
@@ -42,7 +42,7 @@ $stmt2 = $conn->prepare("SELECT p.*, MIN(vp.price) as minPrice, MAX(vp.price) as
                                     ',\"volume_name\":\"', REPLACE(v.value, '\"', '\\\"'),
                                     '\",\"price\":', vp.price,
                                     '}'
-                                )
+                                ) ORDER BY v.id
                             ), ']') AS volumes
                         FROM products p
                         JOIN volume_product vp ON vp.product_id = p.id

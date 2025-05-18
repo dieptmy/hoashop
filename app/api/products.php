@@ -25,7 +25,7 @@ $sql = "SELECT p.*, MIN(vp.price) as minPrice, MAX(vp.price) as maxPrice,
             ',\"volume_name\":\"', REPLACE(v.value, '\"', '\\\"'),
             '\",\"price\":', vp.price,
             '}'
-        )
+        ) ORDER BY v.id
     ), ']') AS volumes
     FROM products p
     INNER JOIN volume_product vp ON p.id = vp.product_id

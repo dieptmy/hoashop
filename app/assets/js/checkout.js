@@ -145,11 +145,9 @@ document.getElementById('saveAddress').onclick = async function() {
     
     const productBuy = JSON.parse(localStorage.getItem('productBuy'));
     let subtotalResult = 0;
-
     for (const item of productBuy) {
         const quantity = item.quantity;
         const p = item;
-
         document.getElementById('product-info').innerHTML += `
             <div class="card mb-3" style="max-width: 630px;padding-bottom: 30px;border: none;border-bottom: 1px solid #eee;">
                 <div class="row ">
@@ -160,7 +158,7 @@ document.getElementById('saveAddress').onclick = async function() {
                         <div class="card-body">
                             <div class="card-info">
                                 <p class="card-title">${p.name}</p>
-                                <p class="card-volume">${p.volume}ml</p>
+                                <p class="card-volume">${p.value}ml</p>
                                 </div>
                                 <div class="card-quantity">
                                     <div class="card-price">${Number(p.price).toLocaleString('vi-VN')}₫</div>

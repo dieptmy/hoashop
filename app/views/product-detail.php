@@ -51,7 +51,7 @@
                         <div class="button">
 
                             <button class="btn btn-primary add-to-cart" id="add-to-cart" data-product-id="">Thêm vào giỏ</button>
-                            <button class="btn btn-success buy-now" id="buy-now" data-product-id="">Mua ngay</button>
+                            <button class="btn btn-success btn-buy" id="buy-now" data-product-id="">Mua ngay</button>
                         </div>
                     </div>
                 </div>
@@ -155,7 +155,7 @@
                         </div>
                         <div class="d-flex " style="justify-content: space-between; padding: 6px;">
                             <button class="btn btn-primary add-to-cart" data-product-id="${rp.id}">Thêm vào giỏ</button>
-                            <button class="btn btn-success buy-now" data-product-id="${rp.id}">Mua ngay</button>
+                            <button class="btn btn-success btn-buy" data-product-id="${rp.id}">Mua ngay</button>
                             </div>
                     </div>
                 </div>

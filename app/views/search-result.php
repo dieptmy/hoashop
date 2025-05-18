@@ -38,7 +38,7 @@ switch (Number(categoryId)) {
     case 5:
         categoryName = "gucci";
         break;
-    default:
+    case 6:
         categoryName = "burberry";
         break;
 }
@@ -61,8 +61,24 @@ fetch(url)
         if (data.data.length === 0) {
             list.innerHTML = `<p class="text-danger">Không tìm thấy sản phẩm phù hợp.</p>`;
         } else {
-            document.getElementById("search-title").innerText = 
-    `Kết quả tìm kiếm của: ${keyword ? ` "${keyword} "  -  ` : ''}${categoryName ? `" ${categoryName} "  -  ` : ''}${minPrice ? `  giá từ  "${minPrice}₫"` : ''}${maxPrice ? `  đến  "${maxPrice}₫"`: ''}`;
+            let titleParts = [];
+
+            if (keyword) titleParts.push(`"${keyword}"`);
+            if (categoryName) titleParts.push(`"${categoryName}"`);
+            if (minPrice && maxPrice) {
+            titleParts.push(`giá từ "${minPrice}₫" đến "${maxPrice}₫"`);
+            } else if (minPrice) {
+            titleParts.push(`giá từ "${minPrice}₫"`);
+            } else if (maxPrice) {
+            titleParts.push(`giá đến "${maxPrice}₫"`);
+            }
+
+            const finalTitle = titleParts.length
+            ? `Kết quả tìm kiếm của: ${titleParts.join(" - ")}`
+            : "Không có điều kiện tìm kiếm";
+
+            document.getElementById("search-title").innerText = finalTitle;
+
 
 
             list.innerHTML = data.data.map(product => `
