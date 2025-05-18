@@ -67,16 +67,17 @@ $categories = $categoryQuery->fetch_all(MYSQLI_ASSOC);
                                                 <option value="">Phân loại</option>
                                                  <?php 
                                                     foreach($categories as $category) {
-                                                        echo '<option value="'. $category['id'] .'">' . $category['name'] .'</option>';
+                                                        $selected = $category['id'] == $_GET['category'] ? 'selected': '';
+                                                        echo '<option '.$selected.'  value="'. $category['id'] .'">' . $category['name'] .'</option>';
                                                     }
                                                 ?>
                     
                                             </select>
                                         </div>
-                                        <div class="col-md-3 d-flex align-items-center">
-                                            <input type="number" id="minPrice" class="form-control" placeholder="Giá từ">
+                                        <div class="col-md-6 d-flex align-items-center">
+                                            <input type="number" min="0" step="1000" id="minPrice" class="form-control" <?php if(isset($_GET['minPrice'])) echo 'value="'.$_GET['minPrice'].'"' ?>  placeholder="Giá từ">
                                             <span style="margin: 0 5px;">-</span>
-                                            <input type="number" id="maxPrice" class="form-control" placeholder="Giá đến">
+                                            <input type="number" id="maxPrice" class="form-control" <?php if(isset($_GET['maxPrice'])) echo 'value="'.$_GET['maxPrice'].'"' ?> placeholder="Giá đến">
                                         </div>
                                         <div class="col-md-3">
                                             <button type="submit" class="btn btn-link btn-search w-100">Tìm kiếm nâng cao</button>

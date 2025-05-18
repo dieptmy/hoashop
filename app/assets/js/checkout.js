@@ -147,16 +147,9 @@ document.getElementById('saveAddress').onclick = async function() {
     let subtotalResult = 0;
 
     for (const item of productBuy) {
-        const productVolumeId = item.volume_product_id;
         const quantity = item.quantity;
-        const res = await fetch('/app/api/product-detail.php?id=' + productVolumeId);
-        const data = await res.json();
-        if (!data.success) {
-            document.getElementById('product-info').innerHTML = '<p>Không tìm thấy sản phẩm!</p>';
-            return;
-        }
-        const p = data.product;
-        console.log('price', p.price);
+        const p = item;
+
         document.getElementById('product-info').innerHTML += `
             <div class="card mb-3" style="max-width: 630px;padding-bottom: 30px;border: none;border-bottom: 1px solid #eee;">
                 <div class="row ">

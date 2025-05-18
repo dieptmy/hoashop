@@ -65,10 +65,7 @@ require_once dirname( __FILE__ ) . '/config/db.php';
         document.addEventListener('click', function(e) {
         const img = e.target.closest('.product-image img, .product-image ');
         if (img) {
-            // Lấy productId từ thẻ cha
-            const productCard = img.closest('.description');
-            if (!productCard) return;
-            const productId = productCard.querySelector('.add-to-cart-bestseller')?.dataset.productId;
+            const productId = img.dataset.productId;
             if (!productId) return;
             // Lưu vào localStorage hoặc chuyển qua query string
             // Cách 1: dùng query string

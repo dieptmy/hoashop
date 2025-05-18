@@ -16,13 +16,17 @@ $params = [];
 $types = "";
     
 $sqlCount = "SELECT count(*) FROM products p
-    WHERE EXISTS(
-        select 1
-        from volume_product vp
-        where p.id = vp.product_id
-    ) AND status = 'active'";
+    WHERE status = 'active'";
 
-$sql = "SELECT p.*, MIN(vp.price) as minPrice, MAX(vp.price) as maxPrice
+$sql = "SELECT p.*, MIN(vp.price) as minPrice, MAX(vp.price) as maxPrice,
+    CONCAT('[', GROUP_CONCAT(
+        CONCAT(
+            '{\"volume_id\":', v.id,
+            ',\"volume_name\":\"', REPLACE(v.value, '\"', '\\\"'),
+            '\",\"price\":', vp.price,
+            '}'
+        )
+    ), ']') AS volumes
     FROM products p
     INNER JOIN volume_product vp ON p.id = vp.product_id
     INNER JOIN volume v ON vp.volume_id = v.id
@@ -42,6 +46,12 @@ if ($keyword !== null) {
     $types .= "s";
 }
 
+ $sqlCount .= ' AND EXISTS(
+        select 1
+        from volume_product vp
+        where p.id = vp.product_id
+    ';
+
 if ($minPrice !== null) {
     $sql .= " AND vp.price >= ?";
     $sqlCount .= " AND vp.price >= ?";
@@ -55,6 +65,7 @@ if ($maxPrice !== null) {
     $params[] = (int)$maxPrice;
     $types .= "i";
 }
+$sqlCount .= ')';
 
 
 $stmt2 = $conn->prepare($sqlCount);
@@ -91,6 +102,7 @@ $result = $stmt->get_result();
 
 $products = [];
 while ($row = $result->fetch_assoc()) {
+    $row['volumes'] = json_decode($row['volumes']);
     $products[] = $row;
 }
 

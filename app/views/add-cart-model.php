@@ -1,5 +1,6 @@
     <div id="addToCartModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content modal-content-cart">
+            <input type="hidden" id="product-card-info" data-product="" />
             <span class="close-modal">&times;</span>
             <h2>Thêm vào giỏ hàng</h2>
             <div class="product-info">

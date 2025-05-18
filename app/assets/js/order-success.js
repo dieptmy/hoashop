@@ -7,6 +7,13 @@ alert('Bạn đã đặt hàng thành công!');
     }
 
     const orderId = getQueryParam('order_id');
+    const orderStatusMap = {
+        pending: 'Chờ xác nhận',
+        confirmed: 'Đã xác nhận',
+        shipped: 'Đang giao',
+        delivered: 'Đã giao thành công',
+        cancel: 'Đã hủy'
+    }
     console.log('orderId', orderId);
     if (!orderId) {
         document.body.innerHTML = '<div class="container mt-5"><div class="alert alert-danger">Không tìm thấy đơn hàng!</div></div>';
@@ -24,12 +31,9 @@ alert('Bạn đã đặt hàng thành công!');
                 }
                 
                 
-                console.log('data', data.order);
-                console.log('data', data.user);
-                console.log('data', data.items);
                 // Thông tin đơn hàng
                 const paymentMethod = data.order.payment_method === 'cod' ? 'Thanh toán khi nhận hàng' : 'Thanh toán online';
-                const orderStatus = data.order.status === 'pending' ? 'Chờ xác nhận' : data.order.status === 'processing' ? 'Đang xử lý' : data.order.status === 'completed' ? 'Đã hoàn tất' : data.order.status === 'cancelled' ? 'Đã hủy' : 'Không xác định';
+                const orderStatus = orderStatusMap[data.order.status] || 'Unknown';
 
                 document.getElementById('orderId').textContent = data.order.id;
                 document.getElementById('orderStatus').textContent = orderStatus;

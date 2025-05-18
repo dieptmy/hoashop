@@ -187,28 +187,28 @@
 </div>
 </div> 
 
-    <script src="/app/assets/js/flashsale.js"></script>
-     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const basePath = 'app/';
+<script src="/app/assets/js/flashsale.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const basePath = 'app/';
 
-            // Load sản phẩm Best Seller
-            fetch(`/app/api/products.php`)
-                .then(response => response.json())
-                .then(data => {
-                    products = data.data;
-                    if (typeof renderProducts === 'function') renderProducts();
-                    if (typeof renderAllProduct === 'function') renderAllProduct();
-                })
-                .catch(error => console.error('Error loading products:', error));
+    // Load sản phẩm Best Seller
+    fetch(`/app/api/products.php`)
+        .then(response => response.json())
+        .then(data => {
+            productItems = data.data;
+            if (typeof renderProducts === 'function') renderProducts(data.data);
+            if (typeof renderAllProduct === 'function') renderAllProduct(data.data);
+        })
+        .catch(error => console.error('Error loading products:', error));
 
-            // Sử dụng event delegation cho nút "Xem tất cả"
-            document.body.addEventListener('click', function(e) {
-                const viewAllBtn = e.target.closest('#viewAllBtn');
-                if (viewAllBtn) {
-                    e.preventDefault();
-                    window.location.href = `product-list?`;
-                }
-            });
-        });
-        </script>
+    // Sử dụng event delegation cho nút "Xem tất cả"
+    document.body.addEventListener('click', function(e) {
+        const viewAllBtn = e.target.closest('#viewAllBtn');
+        if (viewAllBtn) {
+            e.preventDefault();
+            window.location.href = `product-list?`;
+        }
+    });
+});
+</script>

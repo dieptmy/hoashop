@@ -10,16 +10,16 @@ $('.slide-product').owlCarousel({
         1000: { items: 5 }
     }
 });
-
-$('.slide-banner').owlCarousel({
-    loop: true,
-    margin: 10,
-    responsiveClass: true,
-    autoplay: true,
-    responsive: {
-        0: { items: 1 }
-    }
-});
+const products = [];
+// $('.slide-banner').owlCarousel({
+//     loop: true,
+//     margin: 10,
+//     responsiveClass: true,
+//     autoplay: true,
+//     responsive: {
+//         0: { items: 1 }
+//     }
+// });
 
 
 
@@ -44,18 +44,18 @@ $('.slide-banner').owlCarousel({
 // });
 
 const authUser = JSON.parse(localStorage.getItem('auth'));
-let products = [];
+let productItems = [];
 
-fetch('/app/api/products.php')
-    .then(response => response.json())
-    .then(data => {
-        products = data.data;
-        renderProducts();
-        renderAllProduct();
-    })
-    .catch(error => console.error('Error loading products:', error));
+// fetch('/app/api/products.php')
+//     .then(response => response.json())
+//     .then(data => {
+//         products = data.data;
+//         renderProducts();
+//         renderAllProduct();
+//     })
+//     .catch(error => console.error('Error loading products:', error));
 
-function renderProducts() {
+function renderProducts(products) {
     const productContainer = document.querySelector('.slide-product');
     if (!productContainer) return;
 
@@ -68,13 +68,13 @@ function renderProducts() {
                 <div class="description col-md-9 col-sm-7 col-lg-12 d-flex m-auto flex-column">
                    
                     <div style="cursor: pointer;" class="product-image">
-                        <img src="/app/${product.image_urf}" alt="${product.name}">
+                        <img src="/app/${product.image_urf}" data-product-id="${product.id}" alt="${product.name}">
                     </div>
                     <p class="name">${product.name}</p>
-                    <p class="price">${formatCurrency(product.price)}</p>
+                    <p class="price">${formatCurrency(product.minPrice)}-${formatCurrency(product.maxPrice)}</p>
                     
                     <div class="btnbox">
-                            <div class="button add-to-cart-bestseller" data-product-id="${product.id}">Thêm vào giỏ</div>
+                            <div class="button add-to-cart" data-product-id="${product.id}">Thêm vào giỏ</div>
                         <div class="button btn-buy" data-product-id="${product.id}">Mua ngay</div>
                     </div>
                     
@@ -107,7 +107,7 @@ function renderProducts() {
 
 }
 
-function renderAllProduct() {
+function renderAllProduct(products) {
     const allProductContainer = document.querySelector('.all-product');
     if(!allProductContainer) return;
 
@@ -119,13 +119,13 @@ function renderAllProduct() {
                 <div class="description col-md-9 col-sm-7 col-lg-12 d-flex m-auto flex-column">
                    
                     <div style="cursor: pointer;" class="product-image">
-                        <img src="/app/${product.image_urf}" alt="${product.name}">
+                        <img src="/app/${product.image_urf}" data-product-id="${product.id}" alt="${product.name}">
                     </div>
                     <p class="name">${product.name}</p>
-                    <p class="price">${formatCurrency(product.price)}</p>
+                    <p class="price">${formatCurrency(product.minPrice)}-${formatCurrency(product.maxPrice)}</p>
                     
                     <div class="btnbox">
-                            <div class="button add-to-cart-bestseller" data-product-id="${product.id}">Thêm vào giỏ</div>
+                            <div class="button add-to-cart" data-product-id="${product.id}">Thêm vào giỏ</div>
                         <div class="button btn-buy" data-product-id="${product.id}">Mua ngay</div>
                     </div>
                     
@@ -161,7 +161,7 @@ function renderAllProduct() {
 
 // Hàm cập nhật hiển thị giá trong modal
 function updateModalPrice(basePrice, volume, quantity) {
-    const adjustedPrice = calculatePriceByVolume(basePrice, volume);
+    const adjustedPrice = basePrice; //calculatePriceByVolume(basePrice, volume);
     const total = adjustedPrice * quantity;
     
     // Cập nhật hiển thị giá đơn vị
@@ -207,113 +207,68 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-    // Xử lý cho .description .add-to-cart-bestseller
-    document.addEventListener('click', function(e) {
-        const addToCartBtn = e.target.closest('.add-to-cart-bestseller');
-        if (addToCartBtn && addToCartBtn.closest('.description')) {
-            if (!authUser) {
-                alert('Mời bạn đăng nhập hoặc đăng kí tài khoản để mua sản phẩm');
-                return;
-            }
-
-            const productCard = addToCartBtn.closest('.description');
-            if (!productCard) return;
-
-            try {
-                const productName = productCard.querySelector('.name')?.textContent || '';
-                const productPrice = (productCard.querySelector('.price')?.textContent || '').replace(/,/g, '');
-                const productImage = productCard.querySelector('img')?.src || '';
-                const productId = addToCartBtn.dataset.productId;
-                console.log('productPrice', productPrice);
-
-                if (!productName || !productPrice || !productImage) {
-                    console.error('Không thể lấy thông tin sản phẩm');
-                    return;
-                }
-
-                // Lưu productId vào modal
-                const modalContent = document.querySelector('.modal-content');
-                modalContent.dataset.productId = productId;
-
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-
-                // Lưu giá gốc vào data attribute
-                modalContent.dataset.basePrice = productPrice;
-
-                document.getElementById('modalProductName').textContent = productName;
-                document.getElementById('modalProductImage').src = productImage;
-
-                // Reset selection
-                document.querySelectorAll('.ml-option').forEach(btn => btn.classList.remove('selected'));
-                document.querySelector('.ml-option[data-ml="100"]').classList.add('selected');
-                document.querySelector('.quantity-input').value = 1;
-
-                //Cập nhật giá ban đầu
-                updateModalPrice(productPrice, 100, 1);
-            } catch (error) {
-                console.error('Lỗi khi lấy thông tin sản phẩm:', error);
-            }
-        }
-    });
-
     // Xử lý cho .product-card .add-to-cart
     document.addEventListener('click', function(e) {
         const addToCartBtn = e.target.closest('.add-to-cart');
-        if (addToCartBtn && addToCartBtn.closest('.product-card') && !addToCartBtn.closest('.description')) {
-            if (!authUser) {
-                alert('Mời bạn đăng nhập hoặc đăng kí tài khoản để mua sản phẩm');
+        if(!addToCartBtn) return;
+        if (!authUser) {
+            alert('Mời bạn đăng nhập hoặc đăng kí tài khoản để mua sản phẩm');
+            return;
+        }
+        const productId = addToCartBtn.dataset.productId;
+        const dataProduct = productItems.find(product => product.id = productId);
+        if (!dataProduct) return;
+
+
+
+        try {
+
+            const productPrice = dataProduct.volumes[dataProduct.volumes.length - 1].price;
+            const productName = dataProduct.name;
+            const productImage = '/app/' + dataProduct.image_urf;
+
+            document.getElementById('product-card-info').value = JSON.stringify(dataProduct);
+            
+            
+            if (!productName || !productPrice || !productImage) {
+                console.error('Không thể lấy thông tin sản phẩm');
+                console.log({productName, productPrice, productImage, productId, productCard});
                 return;
             }
 
-            const productCard = addToCartBtn.closest('.product-card');
-            if (!productCard) return;
+            // Lưu productId vào modal
+            const modalContent = document.querySelector('.modal-content-cart');
+            modalContent.dataset.productId = productId;
 
-            try {
-                const productName = productCard.querySelector('.card-title')?.textContent || '';
-                const productPrice = productCard.querySelector('.price')?.textContent || '';
-                const productImage = productCard.querySelector('img')?.src || '';
-                const productId = addToCartBtn.dataset.productId;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
 
-                if (!productName || !productPrice || !productImage) {
-                    console.error('Không thể lấy thông tin sản phẩm');
-                    console.log({productName, productPrice, productImage, productId, productCard});
-                    return;
-                }
+            // Lưu giá gốc vào data attribute
+            modalContent.dataset.basePrice = productPrice;
 
-                // Lưu productId vào modal
-                const modalContent = document.querySelector('.modal-content');
-                modalContent.dataset.productId = productId;
+            document.getElementById('modalProductName').textContent = productName;
+            document.getElementById('modalProductImage').src = productImage;
 
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-
-                // Lưu giá gốc vào data attribute
-                modalContent.dataset.basePrice = productPrice;
-
-                document.getElementById('modalProductName').textContent = productName;
-                document.getElementById('modalProductImage').src = productImage;
-
-                // Lấy data-volume nếu có
-                const productCol = productCard.closest('[data-volume]');
-                const dataVolume = addToCartBtn.getAttribute('data-volume') || productCol?.dataset.volume;
-
-                // Reset selection
-                document.querySelectorAll('.ml-option').forEach(btn => btn.classList.remove('selected'));
-                if (dataVolume) {
-                    const mlBtn = document.querySelector(`.ml-option[data-ml="${dataVolume}"]`);
-                    if (mlBtn) mlBtn.classList.add('selected');
-                    updateModalPrice(productPrice, dataVolume, 1);                                                                          
-                } else {
-                    document.querySelector('.ml-option[data-ml="100"]').classList.add('selected');
-                    updateModalPrice(productPrice, 100, 1);
-                }
-                document.querySelector('.quantity-input').value = 1;
-
-                
-            } catch (error) {
-                console.error('Lỗi khi lấy thông tin sản phẩm:', error);
+            // Lấy data-volume nếu có
+            const defauleVolume = dataProduct.volumes[dataProduct.volumes.length - 1].volume_name;
+            const dataVolume = addToCartBtn.getAttribute('data-volume') || defauleVolume;
+            console.log('-->productCol=', defauleVolume);
+            console.log('-->', dataVolume)
+            // Reset selection
+            document.querySelectorAll('.ml-option').forEach(btn => btn.classList.remove('selected'));
+            if (dataVolume) {
+                const mlBtn = document.querySelector(`.ml-option[data-ml="${dataVolume}"]`);
+                if (mlBtn) mlBtn.classList.add('selected');
+                updateModalPrice(productPrice, dataVolume, 1);                                                                          
+            } else {
+                document.querySelector('.ml-option[data-ml="100"]').classList.add('selected');
+                updateModalPrice(productPrice, 100, 1);
             }
+            document.querySelector('.modal-content-cart .quantity-input').value = 1;
+
+            
+        } catch (error) {
+            console.error('Lỗi khi lấy thông tin sản phẩm:', error);
         }
     });
 
@@ -342,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 // Lưu productId vào modal
-                const modalContent = document.querySelector('.modal-content');
+                const modalContent = document.querySelector('.modal-content-cart');
                 modalContent.dataset.productId = productId;
 
                 modal.style.display = 'block';
@@ -569,11 +524,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedMl = document.querySelector('.ml-option.selected');
         const mlValue = selectedMl?.dataset.ml; 
         const quantity = parseInt(document.querySelector('.quantity-input').value);
-        const basePrice = document.querySelector('.modal-content').dataset.basePrice;
+        const basePrice = document.querySelector('.modal-content-cart').dataset.basePrice;
         const volume = selectedMl ? parseInt(selectedMl.dataset.ml) : 100;
 
         // Lấy productId từ modal
-        const productId = document.querySelector('.modal-content').dataset.productId;
+        const productId = document.querySelector('.modal-content-cart').dataset.productId;
         if (!productId) {
             alert('Không thể xác định sản phẩm');
             return;
@@ -743,12 +698,15 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('selected');
             
             // Cập nhật giá của modal thêm vào giỏ hàng
-            const modalContent = document.querySelector('.modal-content');
-            const basePrice = modalContent.dataset.basePrice;
+            const modalContent = document.querySelector('.modal-content-cart');
+            const p = document.getElementById('product-card-info').value;
+            const pData = JSON.parse(p);
+        
             const volume = parseInt(this.dataset.ml);
+            const basePrice = pData.volumes.find(v => v.volume_name == volume);
             const quantity = parseInt(document.querySelector('.quantity-input').value);
-            
-            updateModalPrice(basePrice, volume, quantity);
+            modalContent.dataset.basePrice = basePrice.price;
+            updateModalPrice(basePrice.price, volume, quantity);
 
         });
     });
@@ -783,11 +741,11 @@ document.addEventListener('DOMContentLoaded', function() {
             
             input.value = value;
             
-            const modalContent = document.querySelector('.modal-content');
+            const modalContent = document.querySelector('.modal-content-cart');
             const basePrice = modalContent.dataset.basePrice;
             const selectedMl = document.querySelector('.ml-option.selected');
             const volume = selectedMl ? parseInt(selectedMl.dataset.ml) : 100;
-            
+            console.log({basePrice, volume, value});
             updateModalPrice(basePrice, volume, value);
         });
     });
@@ -821,7 +779,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (value > 10) value = 10;
         this.value = value;
 
-        const modalContent = document.querySelector('.modal-content');
+        const modalContent = document.querySelector('.modal-content-cart');
         const basePrice = modalContent.dataset.basePrice;
         const selectedMl = document.querySelector('.ml-option.selected');
         const volume = selectedMl ? parseInt(selectedMl.dataset.ml) : 100;
@@ -1015,7 +973,7 @@ async function addToCart(product) {
         }
 
         // Tính giá dựa trên ml đã chọn
-        const adjustedPrice = calculatePriceByVolume(product.price, product.ml);
+        const adjustedPrice = product.price; // calculatePriceByVolume(product.price, product.ml);
         console.log('adjustedPrice', adjustedPrice);
 
         // Tìm sản phẩm trong giỏ hàng

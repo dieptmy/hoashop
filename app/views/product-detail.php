@@ -130,11 +130,12 @@
                 return;
             }
             const product = data.product;
+            productItems = [product];
             // Gán dữ liệu vào các phần tử sẵn có
             document.getElementById('productImage').src = '/app/' + product.image_urf;
             document.getElementById('productImage').alt = product.name;
             document.getElementById('productName').textContent = product.name;
-            document.getElementById('productPrice').textContent = 'Giá: ' + Number(product.price).toLocaleString('vi-VN') + '₫';
+            document.getElementById('productPrice').textContent = `Giá: ${Number(product.minPrice).toLocaleString('vi-VN')} - ${Number(product.maxPrice).toLocaleString('vi-VN')} ₫`;
             document.getElementById('productDescription').textContent = product.description || '';
             document.getElementById('add-to-cart').dataset.productId = product.id;
             document.getElementById('buy-now').dataset.productId = product.id;
@@ -149,7 +150,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">${rp.name}</h5>
-                            <p class="price">${Number(rp.price).toLocaleString('vi-VN')}₫</p>
+                            <p class="price">${Number(rp.minPrice).toLocaleString('vi-VN')} - ${Number(rp.maxPrice).toLocaleString('vi-VN')} ₫</p>
                             
                         </div>
                         <div class="d-flex " style="justify-content: space-between; padding: 6px;">

@@ -73,7 +73,7 @@ fetch(url)
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">${product.name}</h5>
-                            <p class="price">${Number(product.price).toLocaleString('vi-VN')}₫</p>
+                            <p class="price">${Number(product.minPrice).toLocaleString('vi-VN')}₫-${Number(product.maxPrice).toLocaleString('vi-VN')}₫</p>
                             
                             <div class="d-flex" style="justify-content: space-between; padding: 6px;">
                                 <button class="btn btn-primary add-to-cart" data-product-id="${product.id}">Thêm vào giỏ</button>

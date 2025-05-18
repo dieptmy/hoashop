@@ -11,7 +11,6 @@ const urlParams = new URLSearchParams(window.location.search);
 const categoryId = urlParams.get('id') || '';
 const page = parseInt(urlParams.get('page')) || 1;
 
-
 // if (!categoryId) {
 //     document.getElementById("product-list").innerHTML = "<p class='text-danger'>Không tìm thấy danh mục sản phẩm.</p>";
 //     throw new Error("Thiếu category_id trên URL");
@@ -29,7 +28,7 @@ fetch(url)
             list.innerHTML = "<p class='text-danger'>Không có sản phẩm nào.</p>";
             return;
         }
-
+        productItems = data.data;
         // Render sản phẩm
         list.innerHTML = data.data.map(product => `
             <div class="col-md-3 product-col">
@@ -39,7 +38,7 @@ fetch(url)
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">${product.name}</h5>
-                        <p class="price">${Number(product.price).toLocaleString('vi-VN')}₫</p>
+                        <p class="price">${Number(product.minPrice).toLocaleString('vi-VN')}₫-${Number(product.maxPrice).toLocaleString('vi-VN')}₫</p>
                         
                         <div class="d-flex" style="justify-content: space-between; padding: 6px;">
                             <button class="btn btn-primary add-to-cart" data-product-id="${product.id}">Thêm vào giỏ</button>
