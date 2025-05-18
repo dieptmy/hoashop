@@ -3,7 +3,6 @@
 require_once dirname( __FILE__ ) . '/../../config/db.php';
 header('Content-Type: application/json');
 
-// Nhận tham số từ URL
 $categoryId = $_GET['category_id'] ?? null;
 $keyword = $_GET['keyword'] ?? null;
 $minPrice = $_GET['minPrice'] ?? null;
@@ -12,40 +11,35 @@ $page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
 $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 12;
 $offset = ($page - 1) * $limit;
 
-// Base SQL
-$sqlCount = "SELECT count(*)
-        FROM products p
-        LEFT JOIN volume_product vp ON p.id = vp.product_id
-        LEFT JOIN volume v ON vp.volume_id = v.id
-        LEFT JOIN category c ON p.category_id = c.id
-        WHERE v.value = 100";
 
-$sql = "SELECT 
-            p.*, 
-            vp.price, 
-            v.value as volume,
-            c.name as category
-        FROM products p
-        LEFT JOIN volume_product vp ON p.id = vp.product_id
-        LEFT JOIN volume v ON vp.volume_id = v.id
-        LEFT JOIN category c ON p.category_id = c.id
-        WHERE v.value = 100";
-
-// Điều kiện lọc
 $params = [];
 $types = "";
-if ($categoryId !== null) {
-    $sql .= " AND c.id = ?";
-    $sqlCount .= " AND c.id = ?";
-    $params[] = (int)$categoryId;
+    
+$sqlCount = "SELECT count(*) FROM products p
+    WHERE EXISTS(
+        select 1
+        from volume_product vp
+        where p.id = vp.product_id
+    ) AND status = 'active'";
+
+$sql = "SELECT p.*, MIN(vp.price) as minPrice, MAX(vp.price) as maxPrice
+    FROM products p
+    INNER JOIN volume_product vp ON p.id = vp.product_id
+    INNER JOIN volume v ON vp.volume_id = v.id
+    WHERE status = 'active'";
+
+if(!empty($categoryId)) {
+     $sql .= " AND p.category_id = ?";
+    $sqlCount .= " AND p.category_id = ?";
+    $params[] = $categoryId;
     $types .= "i";
 }
 
 if ($keyword !== null) {
-    $sql .= " AND p.name like ?";
-    $sqlCount .= " AND p.name like ?";
+    $sql .= " AND p.name LIKE ?";
+    $sqlCount .= " AND p.name LIKE ?";
     $params[] = '%' . $keyword . '%';
-    $types .= 's';
+    $types .= "s";
 }
 
 if ($minPrice !== null) {
@@ -62,7 +56,7 @@ if ($maxPrice !== null) {
     $types .= "i";
 }
 
-// Lấy tổng số bản ghi
+
 $stmt2 = $conn->prepare($sqlCount);
 if (!$stmt2) {
     echo json_encode(["success" => false, "error" => $conn->error]);
@@ -76,12 +70,13 @@ $result2 = $stmt2->get_result();
 $totalRow = $result2->fetch_row();
 $total = $totalRow ? (int)$totalRow[0] : 0;
 
-// Thêm phân trang
-$sql .= " LIMIT ? OFFSET ?";
+
+$sql .= " GROUP BY p.id LIMIT ? OFFSET ?";
 $params[] = $limit;
 $params[] = $offset;
 $types .= "ii";
-// Truy vấn dữ liệu sản phẩm
+
+
 $stmt = $conn->prepare($sql);
 if (!$stmt) {
     echo json_encode(["success" => false, "error" => $conn->error]);
@@ -91,9 +86,9 @@ if ($types) {
     $stmt->bind_param($types, ...$params);
 }
 $stmt->execute();
-$result =  $stmt->get_result();
+$result = $stmt->get_result();
 
-// Trả kết quả
+
 $products = [];
 while ($row = $result->fetch_assoc()) {
     $products[] = $row;

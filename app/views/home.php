@@ -207,7 +207,7 @@
                 const viewAllBtn = e.target.closest('#viewAllBtn');
                 if (viewAllBtn) {
                     e.preventDefault();
-                    window.location.href = `product-list`;
+                    window.location.href = `product-list?`;
                 }
             });
         });

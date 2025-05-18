@@ -13,13 +13,11 @@ try {
                oi.price,
                p.name as product_name,
                p.image_urf as product_image,
-               b.name as brand,
                v.value as volume_name
         FROM orders o
         JOIN order_items oi ON o.id = oi.order_id
         JOIN volume_product vp  ON oi.volume_product_id = vp.id
         JOIN products p ON vp.product_id = p.id
-        JOIN brand b ON p.brand_id = b.id
         JOIN volume v ON vp.volume_id = v.id
         WHERE o.user_id = ? AND o.status = 'delivered'
         ORDER BY o.created_at DESC
@@ -52,7 +50,6 @@ try {
             'price' => $row['price'],
             'product_name' => $row['product_name'],
             'product_image' => $row['product_image'],
-            'brand' => $row['brand'],
             'volume_name' => $row['volume_name']
         ];
     }

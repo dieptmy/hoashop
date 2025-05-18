@@ -96,8 +96,8 @@ async function updateTotal() {
             return total;
         }, 0);
 
-        const shippingFee = subtotal > 0 ? 50000 : 0;
-        const total = subtotal + shippingFee;
+        // const shippingFee = subtotal > 0 ? 50000 : 0;
+        const total = subtotal ;
 
         document.getElementById('subtotal').textContent = formatCurrency(subtotal);
         document.getElementById('total').textContent = formatCurrency(total);

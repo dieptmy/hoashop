@@ -16,11 +16,13 @@ $sql = "
         p.id AS product_ID,
         p.name AS product_name,
         p.image_urf AS image_url,
-        p.category_id,
+        c.id AS category_id,
         p.status,
         MIN(vp.price) AS min_price,
         MAX(vp.price) AS max_price
     FROM products p
+    LEFT JOIN product_category pc ON pc.product_id = p.id
+    LEFT JOIN category c ON c.id = pc.category_id
     LEFT JOIN volume_product vp ON p.id = vp.product_id
     WHERE p.status = 'hidden'
     GROUP BY p.id
@@ -64,8 +66,8 @@ $result = $conn->query($sql);
                             <td><?= $row['product_ID'] ?></td>
                             <td>
                                 <?php
-                                    $imagePath = !empty($row['image_url']) && file_exists('../' . $row['image_url'])
-                                        ? '/' . ltrim($row['image_url'], '/')
+                                    $imagePath = !empty($row['image_url'])
+                                        ? '/app/' . ltrim($row['image_url'], '/')
                                         : '/images/no-image.jpg';
                                 ?>
                                 <img src="<?= htmlspecialchars($imagePath) ?>" alt="Ảnh sản phẩm" width="80" height="80" class="rounded">

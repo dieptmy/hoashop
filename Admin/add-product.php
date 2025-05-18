@@ -10,6 +10,20 @@ $volumes = $volumeQuery->fetch_all(MYSQLI_ASSOC);
 
 $categoryQuery = $conn->query("SELECT * FROM category ORDER BY id ASC");
 $categories = $categoryQuery->fetch_all(MYSQLI_ASSOC);
+
+
+$typeCategories = [];
+$brandCategories = [];
+
+foreach ($categories as $category) {
+    if ($category['type'] === 'type') {
+        $typeCategories[] = $category;
+    } elseif ($category['type'] === 'brand') {
+        $brandCategories[] = $category;
+    }
+}
+
+
 ?>
 
 <div class="container py-5">
@@ -24,13 +38,20 @@ $categories = $categoryQuery->fetch_all(MYSQLI_ASSOC);
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label">Danh mục</label>
-                        <select name="category_id" class="form-select" required>
-                            <?php foreach($categories as $category) {
-                                echo ' <option value="' .  $category['id'] .'">' . $category['name']. '</option>';
-                            } ?>
-                        </select>
+                        <div class="">
+
+                            <label class="form-label d-block">Phân loại</label>
+                            <?php foreach ($typeCategories as $cat): ?>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="category_id" id="type<?= $cat['id'] ?>" value="<?= $cat['id'] ?>" required>
+                                    <label class="form-check-label" for="type<?= $cat['id'] ?>"><?= htmlspecialchars($cat['name']) ?></label>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
+
+
+
 
                     <div class="col-md-12">
                         <label class="form-label">Mô tả</label>

@@ -43,7 +43,7 @@ async function loadOrders() {
                     </div>
                     <div class="product-info-history">
                         <div class="product-image-history">
-                            <img src="${firstItem.product_image}" alt="${firstItem.product_name}">
+                            <img src="/app/${firstItem.product_image}" alt="${firstItem.product_name}">
                         </div>
                         <div class="product-details-history">
                             <div class="text-start">
@@ -67,7 +67,7 @@ async function loadOrders() {
                             ${order.items.slice(1).map(item => `
                                 <div class="additional-item-history">
                                     <div class="product-image-history">
-                                        <img src="${item.product_image}" alt="${item.product_name}">
+                                        <img src="/app/${item.product_image}" alt="${item.product_name}">
                                     </div>
                                     <div class="product-details-history">
                                         <div class="text-start">

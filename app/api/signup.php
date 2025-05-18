@@ -4,7 +4,8 @@ require_once dirname( __FILE__ ) . '/../../config/db.php';
 
 $username = $_POST['username'] ?? '';
 $email = $_POST['email'] ?? '';
-$password = $_POST['password'] ?? '';
+$passwordRaw = $_POST['password'] ?? '';
+$password = password_hash($passwordRaw, PASSWORD_DEFAULT);
 $number = $_POST['number'] ?? '';
 
 if (!$username || !$email || !$password) {
@@ -12,7 +13,7 @@ if (!$username || !$email || !$password) {
     exit;
 }
 
-// Kiểm tra username hoặc email đã tồn tại
+
 $stmt = $conn->prepare("SELECT id FROM users WHERE username = ? OR email = ?");
 $stmt->bind_param("ss", $username, $email);
 $stmt->execute();
@@ -22,7 +23,7 @@ if ($stmt->num_rows > 0) {
     exit;
 }
 
-// Thêm user mới
+
 $stmt = $conn->prepare("INSERT INTO users (username, email, password, number, role) VALUES (?, ?, ?, ?, 'user')");
 $stmt->bind_param("ssss", $username, $email, $password, $number);
 

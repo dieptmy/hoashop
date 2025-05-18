@@ -20,13 +20,13 @@ document.querySelector('.save-method').onclick = function(e) {
     const paymentMethod = checked.value;
     const paymentLabel = checked.parentElement.querySelector('.payment-label').textContent;
 
-    // Cập nhật label hiển thị
+   
     document.querySelector('.payment-label.select').textContent = paymentLabel;
 
-    // Lưu vào localStorage
+   
     localStorage.setItem('paymentMethod', paymentMethod);
 
-    // Ẩn box chọn, hiện lại nút "Thay đổi"
+    
     document.querySelector('.payment-method-list').style.display = 'none';
     document.querySelector('.change-method').style.display = 'inline';
     document.querySelector('.payment-label.select').style.display = 'block';
@@ -36,9 +36,9 @@ document.querySelector('.save-method').onclick = function(e) {
     const auth = JSON.parse(localStorage.getItem('auth') || '{}');
     document.getElementById('fullname').textContent = auth.fullname || '';
     document.getElementById('phone').textContent = auth.number || '';
-    document.getElementById('address').textContent = auth.address || '';
-    document.getElementById('district').textContent = auth.district || '';
-    document.getElementById('city').textContent = auth.city || '';
+    document.getElementById('address').textContent = auth.address + ", " + auth.district + ", " + auth.city || '';
+    // document.getElementById('district').textContent = auth.district || '';
+    // document.getElementById('city').textContent = auth.city || '';
 }
 loadUserInfo();
 

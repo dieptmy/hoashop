@@ -1,6 +1,6 @@
 <?php
 include 'includes/header.php';
-require_once dirname( __FILE__ ) . '/../config/db.php';
+require_once dirname(__FILE__) . '/../config/db.php';
 
 $limit = 8;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -15,12 +15,13 @@ $sql = "
     SELECT 
         p.id AS product_ID,
         p.name AS product_name,
-        p.category_id,
         p.image_urf AS image_url,
         p.status,
         MIN(vp.price) AS min_price,
-        MAX(vp.price) AS max_price
+        MAX(vp.price) AS max_price,
+        c.name as category_name
     FROM products p
+    LEFT JOIN category c ON c.id = p.category_id
     LEFT JOIN volume_product vp ON p.id = vp.product_id
     WHERE p.status = 'active'
     GROUP BY p.id
@@ -53,7 +54,7 @@ $result = $conn->query($sql);
                             <th>Ảnh</th>
                             <th>Tên</th>
                             <th>Giá</th>
-                            <th>Danh mục</th>
+                            <th>Loại</th>
                             <th>Trạng thái</th>
                             <th>Chức năng</th>
                         </tr>
@@ -61,22 +62,20 @@ $result = $conn->query($sql);
                     <tbody>
                         <?php if ($result->num_rows === 0): ?>
                             <tr>
-                                <td colspan="7" class="text-center text-muted py-5">
+                                <td colspan="8" class="text-center text-muted py-5">
                                     Không có sản phẩm nào đang hiển thị.
                                 </td>
                             </tr>
                         <?php else: ?>
                             <?php while ($row = $result->fetch_assoc()): ?>
+                                <?php
+                                    $imagePath = (!empty($row['image_url']))
+                                        ? '/app/' . ltrim($row['image_url'], '/')
+                                        : '/app/images/no-image.jpg';
+                                ?>
                                 <tr>
                                     <td><?= $row['product_ID'] ?></td>
                                     <td>
-                                        <?php
-                                            $imageFullPath = '/app/' . $row['image_url'];
-                                            $imagePath = (!empty($row['image_url']))
-                                                ? '/app/' . ltrim($row['image_url'], '/')
-                                                : '/app/images/no-image.jpg';
-                                        ?>
-                                    
                                         <img src="<?= htmlspecialchars($imagePath) ?>" alt="Ảnh sản phẩm" width="80" height="80" class="rounded">
                                     </td>
                                     <td class="text-start"><?= htmlspecialchars($row['product_name']) ?></td>
@@ -86,17 +85,8 @@ $result = $conn->query($sql);
                                             - <?= number_format($row['max_price'], 0, ',', '.') ?>đ
                                         <?php endif; ?>
                                     </td>
-                                    <td>
-                                        <?php
-                                        switch ($row['category_id']) {
-                                            case 1: echo "Nam"; break;
-                                            case 2: echo "Nữ"; break;
-                                            case 3: echo "Unisex"; break;
-                                            default: echo "Không rõ"; break;
-                                        }
-                                        ?>
-                                    </td>
-                                    <td>
+                                    <td><?= $row['category_name']?></td>
+                                     <td>
                                         <span class="badge bg-success">Hiển thị</span>
                                     </td>
                                     <td>

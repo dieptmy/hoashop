@@ -20,7 +20,7 @@
             <div class="col-md-6">
                 <div class="product-info-detail">
                     <h1 id="productName"></h1>
-                    <div id="productBrand"></div>
+                    
                     <div id="productPrice"></div>
                     
                     <div class="product-description">
@@ -134,7 +134,6 @@
             document.getElementById('productImage').src = '/app/' + product.image_urf;
             document.getElementById('productImage').alt = product.name;
             document.getElementById('productName').textContent = product.name;
-            document.getElementById('productBrand').textContent = 'Thương hiệu: ' + product.brand;
             document.getElementById('productPrice').textContent = 'Giá: ' + Number(product.price).toLocaleString('vi-VN') + '₫';
             document.getElementById('productDescription').textContent = product.description || '';
             document.getElementById('add-to-cart').dataset.productId = product.id;
@@ -151,7 +150,7 @@
                         <div class="card-body">
                             <h5 class="card-title">${rp.name}</h5>
                             <p class="price">${Number(rp.price).toLocaleString('vi-VN')}₫</p>
-                            <div class="brand">${rp.brand}</div>
+                            
                         </div>
                         <div class="d-flex " style="justify-content: space-between; padding: 6px;">
                             <button class="btn btn-primary add-to-cart" data-product-id="${rp.id}">Thêm vào giỏ</button>

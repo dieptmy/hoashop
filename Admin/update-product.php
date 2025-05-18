@@ -3,7 +3,7 @@ require_once dirname( __FILE__ ) . '/../config/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = (int)$_POST['product_id'];
-    $name = (int)$_POST['product_name'];
+    $name = $_POST['product_name'];
     $description = $_POST['description'];
     $status = $_POST['status'];
     $category = (int)$_POST['category_id'];

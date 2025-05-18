@@ -5,7 +5,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['product_name'];
     $description = $_POST['product_about'];
     $status = $_POST['status'];
-    $category = $_POST['category_id'];
+    // $category = $_POST['category_id'];
+    $category_id = $_POST['category_id'];
     $volumePrices = $_POST['volume_price'] ?? [];
 
     $imageUrf = null;
@@ -31,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Thêm sản phẩm vào bảng products
-    $stmt = $conn->prepare("INSERT INTO products (name, description, category_id, status, image_urf) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssiss", $name, $description, $category, $status, $imageUrf);
+    $stmt = $conn->prepare("INSERT INTO products (name, description, status, image_urf, category_id) VALUES (?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssi", $name, $description, $status, $imageUrf, $category_id);
     $stmt->execute();
     $productId = $stmt->insert_id;
     $stmt->close();

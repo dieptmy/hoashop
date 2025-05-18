@@ -51,15 +51,15 @@ alert('Bạn đã đặt hàng thành công!');
                         <div class="card mb-2">
                             <div class="card-body d-flex justify-content-between align-items-center">
                                 <div class="text-start">
-                                    <div><img src="/app/${item.image_urf}" alt="" class="img-fluid" style="width: 120px; height: 120px;"></div>
+                                    <div class="card-image"><img src="/app/${item.image_urf}" alt="" class="img-fluid" ></div>
                                     <div>
-                                        <div style="font-weight: 500;color: #333; padding: 6px 0;">${item.product_name}</div>
+                                        <div style="font-weight: 500;color: #333; padding: 6px 0;font-size: 16px;">${item.product_name}</div>
                                         <div style=" font-size: 14px;color: #666; padding: 6px 0;">${item.value || ''}ml</div>
                                     </div>
                                 </div>
                                 <div class="text-end">
+                                    <div style="color: #e94560;font-weight: 600; font-size: 16px;">${Number(item.price).toLocaleString('vi-VN')}đ</div>
                                     <div style=" font-size: 14px;color: #666;">x ${item.quantity}</div>
-                                    <div style="color: #e94560;font-weight: 600;">${Number(item.price).toLocaleString('vi-VN')}đ</div>
                                     
                                 </div>
                             </div>

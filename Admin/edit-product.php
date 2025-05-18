@@ -44,7 +44,8 @@ $categories = $categoryQuery->fetch_all(MYSQLI_ASSOC);
                         <label class="form-label">Danh mục</label>
                         <select name="category_id" class="form-select">
                             <?php foreach($categories as $category) {
-                                echo ' <option value="' .  $category['id'] .'">' . $category['name']. '</option>';
+                                $selected = $category['id'] == $product['category_id'] ? 'selected': '';
+                                echo ' <option '.$selected.' value="' .  $category['id'] .'">' . $category['name']. '</option>';
                             } ?>
                         </select>
                     </div>

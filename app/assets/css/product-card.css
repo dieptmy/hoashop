@@ -1,5 +1,5 @@
 .container-product{
-    margin-top: 110px;
+    margin-top: 130px;
     padding: 0 10%;
 }
 
@@ -61,7 +61,7 @@
     font-weight: 400;
     margin-bottom: 0.5rem;
     color: #333;
-    min-height: 38px;
+    min-height: 28px;
 }
 
 .product-card .brand {
@@ -258,5 +258,6 @@
 }
 
 .pagination-container li a:hover {
-    background-color: #f8f9fa;
+    background: #2f79c8;
+    color: #fff;
 }

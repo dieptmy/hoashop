@@ -9,10 +9,11 @@ if (!$id) {
 }
 
 // Lấy thông tin sản phẩm
-$stmt = $conn->prepare("SELECT p.*, b.name AS brand, vp.price, p.image_urf, v.value AS volume
+$stmt = $conn->prepare("SELECT p.*, vp.price, p.image_urf, v.value AS volume, c.id AS category
                         FROM products p
-                        JOIN brand b ON p.brand_id = b.id
                         JOIN volume_product vp ON vp.product_id = p.id
+                        JOIN product_category pc ON pc.product_id = p.id
+                        JOIN category c ON c. id = pc.category_id
                         JOIN volume v ON v.id = vp.volume_id
                         WHERE vp.id = ?
                         LIMIT 1");
@@ -27,14 +28,15 @@ if (!$product) {
 }
 
 // Lấy các sản phẩm cùng brand (trừ chính nó)
-$stmt2 = $conn->prepare("SELECT p.*, b.name AS brand, vp.price, p.image_urf
+$stmt2 = $conn->prepare("SELECT p.*, v.value AS volume, vp.price, p.image_urf
                         FROM products p
-                        JOIN brand b ON p.brand_id = b.id
                         JOIN volume_product vp ON vp.product_id = p.id
+                        JOIN product_category pc ON pc.product_id = p.id
+                        JOIN category c ON c.id = pc.category_id
                         JOIN volume v ON vp.volume_id = v.id
-                        WHERE b.name = ? AND vp.id != ?  AND v.value = 100
+                        WHERE c.id = ? AND vp.id != ?  AND v.value = 100 
                         LIMIT 4");
-$stmt2->bind_param("si", $product['brand'], $id);
+$stmt2->bind_param("ii", $product['category'], $id);
 $stmt2->execute();
 $related = [];
 $res2 = $stmt2->get_result();

@@ -72,7 +72,7 @@ function renderProducts() {
                     </div>
                     <p class="name">${product.name}</p>
                     <p class="price">${formatCurrency(product.price)}</p>
-                    <p class="brand">Thương hiệu: ${product.brand}</p>
+                    
                     <div class="btnbox">
                             <div class="button add-to-cart-bestseller" data-product-id="${product.id}">Thêm vào giỏ</div>
                         <div class="button btn-buy" data-product-id="${product.id}">Mua ngay</div>
@@ -113,7 +113,7 @@ function renderAllProduct() {
 
     allProductContainer.innerHTML = '';
 
-    products.slice(0, 10).forEach(product => {
+    products.slice(4, 14).forEach(product => {
         const allProductHTML = `
             <div class="item">
                 <div class="description col-md-9 col-sm-7 col-lg-12 d-flex m-auto flex-column">
@@ -123,7 +123,7 @@ function renderAllProduct() {
                     </div>
                     <p class="name">${product.name}</p>
                     <p class="price">${formatCurrency(product.price)}</p>
-                    <p class="brand">Thương hiệu: ${product.brand}</p>
+                    
                     <div class="btnbox">
                             <div class="button add-to-cart-bestseller" data-product-id="${product.id}">Thêm vào giỏ</div>
                         <div class="button btn-buy" data-product-id="${product.id}">Mua ngay</div>
@@ -154,7 +154,8 @@ function renderAllProduct() {
     }
 
     document.getElementById('viewAllBtn').onclick = function() {
-        window.location.href = 'product-list';
+        console.log("helo");
+        window.location.href = 'product-list?';
     };
 }
 
