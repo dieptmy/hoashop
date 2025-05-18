@@ -42,7 +42,7 @@ fetch(url)
                         
                         <div class="d-flex" style="justify-content: space-between; padding: 6px;">
                             <button class="btn btn-primary add-to-cart" data-product-id="${product.id}">Thêm vào giỏ</button>
-                            <button class="btn btn-success buy-now" data-product-id="${product.id}">Mua ngay</button>
+                            <button class="btn btn-success btn-buy" data-product-id="${product.id}">Mua ngay</button>
                         </div>
                     </div>
                 </div>

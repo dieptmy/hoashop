@@ -15,12 +15,7 @@
             
             <div class="options">
                 <p>Dung tích:</p>
-                <div class="ml-options">
-                    
-                    <button class="ml-option" data-ml="10">10ml</button>
-                    <button class="ml-option" data-ml="30">30ml</button>
-                    <button class="ml-option" data-ml="50">50ml</button>
-                    <button class="ml-option" data-ml="100">100ml</button>
+                <div class="ml-options wrap-ml-option" id="wrap-ml-option">
                 </div>
                 
                 <p>Số lượng:</p>
@@ -59,11 +54,8 @@
             
             <div class="options-buy-now ">
                 <p>Dung tích:</p>
-                <div class="ml-options-buy-now">
-                    <button class="ml-option-buy-now" data-ml="10">10ml</button>
-                    <button class="ml-option-buy-now" data-ml="30">30ml</button>
-                    <button class="ml-option-buy-now" data-ml="50">50ml</button>
-                    <button class="ml-option-buy-now" data-ml="100">100ml</button>
+                <div class="ml-options-buy-now" id="wrap-ml-option-buy-now">
+                   
                 </div>
                 
                 <p>Số lượng:</p>
