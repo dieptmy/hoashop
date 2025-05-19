@@ -37,6 +37,6 @@ document.getElementById('accountBtn').addEventListener('click', function() {
 });
 
 document.getElementById('logout').addEventListener('click', function() {
-    localStorage.removeItem('auth');
-    window.location.replace('login.html');
+    localStorage.removeItem();
+    window.location.replace('/index.php/login');
 }); 

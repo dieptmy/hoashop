@@ -58,20 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     
+    
 });
 
 
 
     
-
-    // $('#contactLink').click(function() {
-    //     $('#contactModal').show();
-    // });
-
-    // $(".close").click(function() {
-    //     $("#contactModal").hide();
-    // });
-
-    // $("#contactModal").click(function() {
-    //     $("#contactModal").hide();
-    // })

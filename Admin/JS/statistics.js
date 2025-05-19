@@ -272,7 +272,7 @@ document.querySelectorAll(".purchaseModal").forEach((button, index) => {
 
 function confirmLogout() {
     if (confirm("Bạn có chắc chắn muốn đăng xuất không?")) {
-        window.location.href = 'login.html'; // Chuyển hướng tới trang login
+        window.location.href = '/index.php/login'; // Chuyển hướng tới trang login
     }
 }
 

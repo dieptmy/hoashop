@@ -27,4 +27,4 @@
             </div>
         </div>
 </div>
-<script src="/app/assets/js/shoppingcart.js"></script>
+<script src="/app/assets/js/shoppingcart.js?v=1.1"></script>

@@ -595,6 +595,19 @@
     line-height: 26px;
 }
 
+.footer .text-footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer .text-footer a{
+    color: #fff;
+}
+
+.footer .text-footer a:hover{
+    color: #b8b4b4;
+}
+
 .footer .h3 {
     font-size: 2rem;
     
@@ -617,7 +630,9 @@
     text-align: center;
 }
 
-
+.footer .col-item:last-child .col:hover{
+    color: #b8b4b4;
+}
 
 .banner {
     margin-top: 80px;
@@ -913,33 +928,35 @@
     background-color: #444;
 }
 
-.bestseller .btnbox .buy-now,
-.allProduct .btnbox .buy-now {
-    background-color: white;
-    color: brown;
-    border-color: brown;
+.bestseller .btnbox .btn-buy,
+.allProduct .btnbox .btn-buy {
+    background-color: #fff;
+    color: #e94560;
+    border-color: #e94560;
+    margin-bottom: 5px;
 }
 
-.bestseller .btnbox .buy-now:hover,
-.allProduct .btnbox .buy-now:hover {
-    background-color: brown;
+.bestseller .btnbox .btn-buy:hover,
+.allProduct .btnbox .btn-buy:hover {
+    background-color: #e94560;
     color: white;
 }
 
-.bestseller .btnbox .buy-now:active,
-.allProduct .btnbox .buy-now:active {
-    background-color: #8b0000;
+.bestseller .btnbox .btn-buy:active,
+.allProduct .btnbox .btn-buy:active {
+    background-color: brown;
 }
 
 .owl-theme .owl-nav [class*=owl-]:hover{
     background-color: transparent !important;
-    color: #333
+    color:#9b9898; 
 }
 /* .owl-item.active {
     margin-right: 22px !important;
 } */
 .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot{
     font-size: 60px !important;
+    color: #9b9898;
 }
 .owl-nav{
     position: relative;
@@ -947,14 +964,14 @@
 .owl-prev{
     font-size: 60px !important;
     position: absolute;
-    top: -240px;
-    left: -20px;
+    top: -358px;
+    left: -22px;
 }
 .owl-next{
     font-size: 60px !important;
     position: absolute;
-    top: -240px;
-    right: -20px;
+    top: -358px;
+    right: -22px;
 }
 
 .allproduct {
@@ -963,8 +980,9 @@
 
 .aboutus {
     width: 100%;
-    height: 380px;
+    height: auto;
     display: flex;
+    padding: 26px 0;
     
 }
 
@@ -1307,7 +1325,7 @@
 
     .bestseller .content .item p,
     .allProduct .content .item p {
-        font-size: clamp(1rem, 2vw, 1.2rem);
+        font-size: clamp(1.4rem, 2vw, 1.6rem);
         min-height: 40px;
     }
 

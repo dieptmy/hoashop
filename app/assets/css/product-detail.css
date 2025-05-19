@@ -147,7 +147,7 @@
 }
 
 .add-to-cart,
-.buy-now {
+.btn-buy {
     padding: 8px 12px;
     letter-spacing: 0.5px;
     margin-bottom: 0.5rem;
@@ -171,19 +171,20 @@
     background-color: #444;
 }
 
-.product-actions .buy-now {
-    background-color: white;
-    color: brown;
-    border-color: brown;
+.product-actions .btn-buy {
+    background-color: #fff;
+    color: #e94560;
+    border-color: #e94560;
+    margin-bottom: 5px;
 }
 
-.product-actions .buy-now:hover {
-    background-color: brown;
+.product-actions .btn-buy:hover {
+    background-color: #e94560;
     color: white;
 }
 
-.product-actions .buy-now:active {
-    background-color: #8b0000;
+.product-actions .btn-buy:active {
+    background-color: brown;
 }
 
 /* Product Details Tabs */

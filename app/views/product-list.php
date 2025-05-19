@@ -15,6 +15,8 @@ const page = parseInt(urlParams.get('page')) || 1;
 //     document.getElementById("product-list").innerHTML = "<p class='text-danger'>Không tìm thấy danh mục sản phẩm.</p>";
 //     throw new Error("Thiếu category_id trên URL");
 // }
+
+
 let url = `/app/api/products.php?page=${page}`;
 if(categoryId) url+=`&category_id=${categoryId}`;
 fetch(url)
@@ -99,7 +101,7 @@ document.addEventListener('click', function (e) {
         const productCard = img.closest('.product-card');
         const productId = productCard?.querySelector('.add-to-cart')?.dataset.productId;
         if (productId) {
-            window.location.href = 'product-detail?id=' + productId;
+            window.location.href = '/index.php/product-detail?id=' + productId;
         }
     }
 });

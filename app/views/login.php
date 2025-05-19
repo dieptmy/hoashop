@@ -30,12 +30,12 @@
                     <button type="submit" class="btn btn-primary">Đăng nhập</button>
                     
                     <div class="signup-text">
-                        Bạn chưa có tài khoản? <a href="/signup">Đăng ký</a>
+                        Bạn chưa có tài khoản? <a href="/index.php/signup">Đăng ký</a>
                 </div>
             </form>
             </div>
         </div>
     </div>
-    <script src="/app/assets/js/auth.js"></script>
+    <script src="/app/assets/js/auth.js?v=1.1"></script>
 </body>
 </html> 

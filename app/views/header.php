@@ -33,7 +33,7 @@ $categories = $categoryQuery->fetch_all(MYSQLI_ASSOC);
                                             <ul class="dropdown-menu">
                                                 <?php 
                                                     foreach($categories as $category) {
-                                                        echo '<li><a class="dropdown-item" href="/product-list?id='. $category['id'].'"> ' . $category['name'] .'</a></li>';
+                                                        echo '<li><a class="dropdown-item" href="/index.php/product-list?id='. $category['id'].'"> ' . $category['name'] .'</a></li>';
                                                     }
                                                 ?>
                                             </ul>
@@ -46,10 +46,10 @@ $categories = $categoryQuery->fetch_all(MYSQLI_ASSOC);
                     </div>
                 </div>
             </div>
-            <div class="header__first-navbar-logo" style="text-align: center;">
+            <a class="header__first-navbar-logo" style="text-align: center; text-decoration: none; cursor: pointer;" href="/">
                         <h1 class="header__first-navbar-brand">VND</h1>
                         <h4 class="header__first-navbar-discription">Discover Your Uniqueness</h4>
-            </div>
+            </a>
             <ul class="header__first-navbar-list-icon" style="cursor: pointer;">
                     <li class="header__first-navbar-item item1" >
                         <div href="" class="header__first-navbar-item-link" >
@@ -90,7 +90,7 @@ $categories = $categoryQuery->fetch_all(MYSQLI_ASSOC);
                     </li>
 
                     <li class="header__first-navbar-item item2" style="border-right: 1px solid var(--white-color);">
-                        <a href="/shoppingcart" class="header__first-navbar-item-link" >
+                        <a href="/index.php/shoppingcart" class="header__first-navbar-item-link" >
                             <i class="header__first-navbar-icon bi bi-cart2"></i>
                         </a>
                     </li>
@@ -100,19 +100,24 @@ $categories = $categoryQuery->fetch_all(MYSQLI_ASSOC);
 
                             <div class="header__first-navbar-item-account had-account" id="accountBox-had">
                                 <ul>
-                                    <li id="button-inf" onclick="displayInfUser()">
+                                    <!-- <li id="button-inf" >
                                         <i class="header__first-navbar-icon bi bi-person-circle"></i>
                                         <p >Thông tin khách hàng</p>
-                                    </li>
+                                    </li> -->
                                     <!-- Modal -->
-                                    <div id="box-inf">
-                                        
-                                    </div>
+                                    <!-- <div id="box-inf" style="display: none;position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, 0.5);z-index: 99999;">
+                                        <div class="info-user">
+                                            <h2>Thông tin người dùng</h1>
+                                            <p>Họ tên: <span id="fullname"></span></p>
+                                            <p>Số điện thoại: <span id="phone"></span></p>
+                                            <p>Địa chỉ: <span id="address"></span></p>
+                                        </div>
+                                    </div> -->
                                         
 
                                     <li>
                                         <i class="header__first-navbar-icon bi bi-cart2"></i>
-                                        <a href="/history">Lịch sử mua hàng</a>
+                                        <a href="/index.php/history">Lịch sử mua hàng</a>
                                     </li>
                                     <li id="logout">
                                         <i  class=" header__first-navbar-icon bi bi-box-arrow-right"></i>
@@ -124,10 +129,10 @@ $categories = $categoryQuery->fetch_all(MYSQLI_ASSOC);
                             <div class="header__first-navbar-item-account no-account" id="accountBox-no">
                                 <ul>
                                     <li>
-                                        <a href="/login">Đăng nhập</a>
+                                        <a href="/index.php/login">Đăng nhập</a>
                                     </li>
                                     <li>
-                                        <a href="/signup">Đăng ký</a>
+                                        <a href="/index.php/signup">Đăng ký</a>
                                     </li>
                                 </ul>
                             </div>
@@ -159,7 +164,7 @@ width: 100%;">
                                     <?php 
                                     foreach($categories as $category) {
                                         echo '<li>
-                                            <a href="/product-list?id='. $category['id'] .'" class="disabled">
+                                            <a href="/index.php/product-list?id='. $category['id'] .'" class="disabled">
                                                 <p>'. $category['name'] .'</p>
                                             </a>
                                         </li>';
@@ -203,4 +208,4 @@ width: 100%;">
             </div>
         </div>
     </div>
-    <script src="./app/assets/js/header.js"></script>
+    <script src="/app/assets/js/header.js?v=1.1"></script>

@@ -109,19 +109,20 @@
     background-color: #444;
 }
 
-.product-card .buy-now {
-    background-color: white;
-    color: brown;
-    border-color: brown;
+.product-card .btn-buy {
+    background-color: #fff;
+    color: #e94560;
+    border-color: #e94560;
+    margin-bottom: 5px;
 }
 
-.product-card .buy-now:hover {
-    background-color: brown;
+.product-card .btn-buy:hover {
+    background-color: #e94560;
     color: white;
 }
 
-.product-card .buy-now:active {
-    background-color: #8b0000;
+.product-card .btn-buy:active {
+    background-color: brown;
 }
 
 .product-card .gap-2 {

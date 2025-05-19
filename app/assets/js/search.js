@@ -36,7 +36,7 @@ document.getElementById('basicSearchForm').onsubmit = function(e) {
     const keyword = document.getElementById('basicSearchInput').value.trim();
     if (!keyword) return;
     // Chuyển hướng sang trang kết quả
-    window.location.href = `search-result?keyword=${encodeURIComponent(keyword)}`;
+    window.location.href = `/index.php/search-result?keyword=${encodeURIComponent(keyword)}`;
 };
 
 // Tìm kiếm nâng cao
@@ -54,7 +54,7 @@ document.getElementById('advancedSearchForm').onsubmit = function(e) {
         .filter(key => params[key])
         .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
         .join('&');
-    window.location.href = `search-result?${query}`;
+    window.location.href = `/index.php/search-result?${query}`;
 };
 
 // // Hàm tìm kiếm sản phẩm và hiển thị kết quả

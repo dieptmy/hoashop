@@ -72,7 +72,6 @@ async function loadOrders() {
                                         <div class="text-start">
                             
                                             <div style="font-size:16px" class="product-name-history">${item.product_name}</div>
-                                            <div style="font-size:16px" class="product-brand-history">${item.brand}</div>
                                             <div style="font-size:16px" class="product-volume-history">${item.volume_name}ml</div>
                                         </div>
                                         <div class="text-end">

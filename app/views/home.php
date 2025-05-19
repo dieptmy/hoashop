@@ -87,10 +87,10 @@
 
                         VND không chỉ tôn vinh phong cách cá nhân, mà còn khơi gợi cảm xúc, giúp bạn tự tin tỏa sáng trong mọi khoảnh khắc</p>
                 </div>
-                <div style="text-align: center;">
+                <!-- <div style="text-align: center;">
 
                     <button>Khám phá</button>
-                </div>
+                </div> -->
             </div>
             <div class="col col-lg-3 d-md-block d-none" style="align-self: end;" >
 
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const viewAllBtn = e.target.closest('#viewAllBtn');
         if (viewAllBtn) {
             e.preventDefault();
-            window.location.href = `product-list?`;
+            window.location.href = `/index.php/product-list`;
         }
     });
 });

@@ -55,7 +55,7 @@ async function signup() {
         const data = await response.json();
         if (data.success) {
             alert('Đăng ký thành công! Vui lòng đăng nhập.');
-            window.location.href = 'login';
+            window.location.href = '/index.php/login';
         } else {
             alert(data.message);
         }

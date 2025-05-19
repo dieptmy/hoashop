@@ -210,7 +210,7 @@ async function checkout() {
         // Xóa sản phẩm đã mua khỏi localStorage nếu muốn
         localStorage.removeItem('productBuy');
         // Chuyển sang trang hiển thị đơn hàng
-        window.location.href = 'order-success?order_id=' + data.order_id;
+        window.location.href = '/index.php/order-success?order_id=' + data.order_id;
     } else {
         alert('Đặt hàng thất bại: ' + (data.message || 'Lỗi không xác định'));
     }

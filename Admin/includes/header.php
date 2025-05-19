@@ -55,7 +55,7 @@ header("Pragma: no-cache");
 
 <div class="sidebar d-flex flex-column p-2">
     <div class="text-white text-center mb-4">
-        <img src="img/logo.png" alt="Logo" class="img-fluid" style="width:40px;">
+        <img src="/Admin/IMG/logo.png" alt="Logo" class="img-fluid" style="width:40px;">
         <span class="nav-text fw-bold"> Admin VND</span>
     </div>
     <ul class="nav nav-pills flex-column mb-auto">

@@ -144,7 +144,7 @@ function buildPageUrl(pageNum) {
     if (minPrice) params.set('minPrice', minPrice);
     if (maxPrice) params.set('maxPrice', maxPrice);
     params.set('page', pageNum);
-    return `/search-result?${params.toString()}`;
+    return `/index.php/search-result?${params.toString()}`;
 }
 
 // Xử lý click ảnh sản phẩm để sang trang chi tiết
@@ -154,7 +154,7 @@ document.addEventListener('click', function (e) {
         const productCard = img.closest('.product-card');
         const productId = productCard?.querySelector('.add-to-cart')?.dataset.productId;
         if (productId) {
-            window.location.href = `product-detail?id=${productId}`;
+            window.location.href = `/index.php/product-detail?id=${productId}`;
         }
     }
 });

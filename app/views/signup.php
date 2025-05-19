@@ -30,13 +30,13 @@
                 <button type="submit" class="btn btn-signup">Đăng ký</button>
                 
                 <div class="login-text">
-                    Bạn đã có tài khoản? <a href="login">Đăng nhập</a>
+                    Bạn đã có tài khoản? <a href="/index.php/login">Đăng nhập</a>
             </div>
         </form>
         </div>
     </div>
 </div>
 
-    <script src="/app/assets/js/signup.js"></script>
+    <script src="/app/assets/js/signup.js?v=1.1"></script>
 </body>
 </html>

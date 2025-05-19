@@ -76,4 +76,4 @@
             </div>
         </div>
     </div>
-    <script src="/app/assets/js/xulydulieu.js"></script>
+    <script src="/app/assets/js/xulydulieu.js?v=1.1"></script>

@@ -114,7 +114,7 @@
             </div>
         </div>
     </div>
-    <script src="/app/assets/js/checkout.js"></script>
+    <script src="/app/assets/js/checkout.js?v=1.1"></script>
 </body>
 </html>
 

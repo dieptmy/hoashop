@@ -218,7 +218,7 @@ async function removeItem(volume_product_id) {
     const user_id = getCurrentUserId();
     if (!username) {
         alert('Vui lòng đăng nhập để thực hiện chức năng này');
-        window.location.href = 'login';
+        window.location.href = '/index.php/login';
         return;
     }
 
@@ -315,7 +315,7 @@ if(btnCheckout) {
         // 3. Kiểm tra thông tin user
         const auth = JSON.parse(localStorage.getItem('auth') || '{}');
         if (auth.fullname && auth.address && auth.district && auth.city && auth.number) {
-            window.location.href = 'checkout';
+            window.location.href = '/index.php/checkout';
         } else {
             showUserInfoModal(function(userInfo) {
                 fetch('/app/api/updateUser.php', {
@@ -331,7 +331,7 @@ if(btnCheckout) {
                     if (data.success) {
                         Object.assign(auth, userInfo);
                         localStorage.setItem('auth', JSON.stringify(auth));
-                        window.location.href = 'checkout';
+                        window.location.href = '/index.php/checkout';
                     } else {
                         alert('Cập nhật thông tin thất bại!');
                     }

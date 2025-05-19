@@ -43,6 +43,6 @@
         </div>
         <a href="/" style="color: #007bff;padding: 0 30px;padding-bottom: 20px; font-size: 16px;">Quay lại trang chủ</a>
     </div>
-    <script src="/app/assets/js/order-success.js"></script>
+    <script src="/app/assets/js/order-success.js?v=1.1"></script>
 </body>
 </html>
