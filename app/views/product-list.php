@@ -91,7 +91,7 @@ function buildPageUrl(pageNum) {
     const params = new URLSearchParams();
     params.set("id", categoryId);
     params.set("page", pageNum);
-    return `/product-list?${params.toString()}`;
+    return `/index.php/product-list?${params.toString()}`;
 }
 
 
