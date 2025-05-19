@@ -200,6 +200,6 @@ function deleteProduct(productIndex) {
 // Confirm logout
 function confirmLogout() {
     if (confirm("Bạn có chắc chắn muốn đăng xuất không?")) {
-        window.location.href = '/index.php/login';
+        window.location.href = '/Admin/admin-login';
     }
 }

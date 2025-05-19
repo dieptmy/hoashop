@@ -4,4 +4,4 @@
         
     </div>
 </div>
-<script src="/app/assets/js/history.js?v=1.1"></script>
+<script src="/app/assets/js/history.js?v=1.2"></script>
