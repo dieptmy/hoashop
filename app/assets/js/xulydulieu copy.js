@@ -190,7 +190,8 @@ function updateModalPrice(basePrice, volume, quantity) {
     }
 }
 
-const modal = document.getElementById('addToCartModal');
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('addToCartModal');
     const modalBuyNow = document.getElementById('buyNowModal');
     const closeModal = document.querySelector('.close-modal');
     const cancelBtn = document.querySelector('.cancel-btn');
@@ -654,6 +655,7 @@ const modal = document.getElementById('addToCartModal');
         
         updateModalPrice(basePriceBuyNow, volumeBuyNow, value);
     });
+});
 
 
 
