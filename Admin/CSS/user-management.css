@@ -1,0 +1,90 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+html, body {
+    height: 100%;
+}
+
+h1 {
+    color: #111;
+    font-weight: bold;
+}
+
+.table th {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+.table td {
+    background-color: #fff;
+    vertical-align: middle;
+}
+
+.btn-accent {
+    background-color: #6f42c1 !important;
+    color: #fff !important;
+    border: none !important;
+}
+
+.btn-accent:hover {
+    background-color: #5a379c !important;
+    color: #fff !important;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    z-index: 1100 !important;
+    display: none;
+}
+
+.dropdown.show .dropdown-menu {
+    display: block;
+}
+
+
+@media (max-width: 768px) {
+    #userTable thead {
+        display: none;
+    }
+
+    #userTable tr {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 10px;
+        background-color: #f8f9fa;
+    }
+
+    #userTable td {
+        display: block;
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+        border: none;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    #userTable td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        font-weight: bold;
+        color: #333;
+        text-align: left;
+    }
+}

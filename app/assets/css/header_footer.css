@@ -1,0 +1,495 @@
+.header {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 8px rgba(0,0,0,0.4);
+} 
+
+/* phan header 1 */
+
+.header__first {
+    height: 80px;
+    background-color: var(--black-color);
+}
+
+.header .header__first > .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__first-navbar {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.header__first-navbar-list {
+    display: flex;
+}
+
+.header__first-navbar-logo{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display:none
+
+}
+
+.header__first-navbar-brand {
+    font-size: 30px;
+    margin: 0;
+}
+
+.header__first-navbar-discription {
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin: 0px;
+}
+
+.header__first-navbar-list-icon {
+    margin: 0px;
+    display: flex;
+}
+
+.header__first-navbar-item {
+    margin: auto;
+    position: relative;
+}
+
+.header__first-navbar-item.item1:active
+ .header__first-navbar-item-search {
+    display: block;
+}
+
+.header__first-navbar-logo,
+.header__first-navbar-item {
+    list-style: none;
+}
+
+.header__first-navbar-item-link {
+    color: var(--white-color);  
+}
+
+.header__first-navbar-item-link:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.header__first-navbar-icon {
+    padding: 0 10px;
+    font-size: 16px;
+}
+
+/* search layout */
+.header__first-navbar-item-search {
+    display: none;
+    position: fixed;
+    width: 65%;
+    height: auto;
+    background-color: var(--white-color);
+    z-index: 100;
+    border: 0.5px solid var(--white-color);
+    right: 144px;
+    top: 80px;
+    box-shadow: 0 8px 24px #0000001a;
+    border-radius: 2px;
+    padding: 0px 18px;
+    animation: apparence ease-in 0.4;
+}
+
+.header__first-navbar-item-search-basic {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+}
+
+.header__first-navbar-item-search-basic-link {
+    display: block;
+    flex:1;
+    text-decoration: none;
+    height: 100%;
+}
+
+.header__first-navbar-item-search-basic-form {
+    width: 100%;
+    height: 30px;
+}
+
+.header__first-navbar-item-search-basic-form-input {
+    width: 100%;
+    height: 100%;
+    border: unset;
+    border-bottom: 1px solid #9d9595;
+    outline: none;
+}
+
+@keyframes apparence {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.header__first-navbar-item-search-basic-form-input::placeholder {
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.header__first-navbar-item-search-expand-text {
+    font-size: 1.4rem;
+    color: black;
+}
+
+.header__first-navbar-item-search-expand-content{
+    display: flex;
+}
+
+.header__first-navbar-item-search-expand p {
+    font-size: 1.4rem;
+    padding-top: 14px;
+}
+
+.header__first-navbar-label {
+    font-size: 1.3rem;
+}
+
+
+/* phan header 2 */
+.header__second {
+    height: 30px;
+    background-color: var(--white-color);
+    margin: 0;
+}
+
+.header__second-navbar {
+    height: 100%;
+    padding-left: 0px;
+}
+
+.header__second-navbar-list {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding-left: 0px;
+    margin: 0px !important;
+    align-items: center;
+}
+
+.header__second-navbar-item {
+    position: relative;
+    list-style: none;
+    border-right: 1px solid #ccc;
+    text-align: center;
+    cursor: pointer;
+    padding: 0px 15px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.disabled {
+    color: rgb(0 0 0 / 58%);
+}
+
+.header__second-navbar-item:hover .header__second-navbarsub {
+    display: block;
+}
+
+.header__second-navbar-link  {
+    text-decoration: none;
+    color: var(--black-color);
+    font-size: 1.6rem;
+}
+
+.header__second-navbar-link:hover {
+    color: rgba(59, 58, 58, 0.7);
+}
+
+.header__second-navbar-link:active{
+    color: rgba(110, 90, 47, 0.7);
+}
+
+
+.header__second-navbarsub {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0px;
+    left: 0px;
+    /* width: 154px; */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    height: auto;
+    background-color: var(--white-color);
+}
+
+.header__second-navbarsub li:hover {
+    background-color: rgb(0 0 0 / 6%)
+}
+
+.header__second-navbarsub li:active {
+    background-color: gray;
+    color: white;
+}
+
+.header__second-navbarsub a {
+    text-decoration: none;
+}
+
+.header__second-navbarsub ul {
+    padding: 0;
+    list-style: none;
+}
+
+.header__second-navbarsub ul p {
+    margin: 0;
+    font-size: 1.4rem;
+    line-height: 30px;
+    font-weight: 300;
+    color: black;
+    text-align: start;
+    padding-left: 12px;
+}
+
+.mobile-menu {
+    color:#fff;
+    font-size: 30px;
+}
+.header__first{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-menu {
+    display: none;
+}
+.nav-mobile{
+    display:none
+}
+.nav-mobile.active{
+    display: block;
+}
+.mobile-menu{
+    display: flex;
+        align-items: center;
+} 
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 768px) {
+    .header__first-navbar-logo{
+        display:block
+    }
+    .main-menu {
+        display: block;
+    }
+    .mobile-menu{
+        display: none;
+    }
+    #navbarSupportedContent {
+        color: white;
+    }
+    .number {
+        font-size: 28px;
+    }
+    .label {
+        font-size: 15px;
+        min-height: 10px;
+    }
+    
+}  
+
+@media (min-width: 567px) {
+    
+}
+
+
+@media (min-width: 300px) {
+    .search-box {
+        display: none;
+    }
+}
+
+/* box tai khoan khach hang */
+
+.header__first-navbar-item-account {
+    position: absolute;
+    width: 220px;
+    height: auto;
+    padding: 10px 10px 10px 0;
+    background-color: white;
+    top: 52px;
+    right: 0;
+    z-index: 101;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    
+}
+
+.header__first-navbar-item-account::before {
+    content: "";
+    border-width: 16px 22px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+    position: absolute;
+    top: -30px;
+    right: 0px;
+}
+
+.had-account {
+    display: none;
+}
+
+.no-account {
+    display: none;
+}
+
+.header__first-navbar-item-account .ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding:10px;
+}
+
+.header__first-navbar-item-account ul li {
+    display: flex;
+    color: #333;
+
+}
+
+.header__first-navbar-item-account li a,
+.header__first-navbar-item-account li p {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.4rem;
+    cursor: pointer;
+    margin: 0;
+}
+
+.header__first-navbar-item-account li a:hover,
+.header__first-navbar-item-account li i:hover,
+.header__first-navbar-item-account li p:hover {
+    color: gray;
+}
+
+.header__first-navbar-item-account li a:active,
+.header__first-navbar-item-account li i:active,
+.header__first-navbar-item-account li p:active {
+    color: #605f5f;
+}
+
+.header__first-navbar-icon {
+    position: relative;
+}
+
+
+/* modal thong tin khach hang */
+#box-inf {
+    display: none;
+}
+
+#box-inf .content-inf {
+    position: fixed;
+    background-color: var(--white-color);
+    width: 60%;
+    left: 170px;
+    top: 30px;
+    padding: 20px;
+    height: auto;
+    z-index: 300;
+}
+
+#box-inf .content-inf .content {
+    padding: 10px;
+}
+
+#box-inf .content-inf .content .infUser {
+    display: flex;
+    justify-content: space-between;
+}
+
+#box-inf .content-inf .infUser i {
+    font-size: 16px;
+    color: black;
+
+}
+
+#box-inf .content-inf .infUser i:hover {
+    cursor: pointer;
+    color: gray;
+}
+
+#box-inf .header-box {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
+}
+
+#box-inf .heading {
+    font-size: 1.9rem;
+}
+
+#box-inf p {
+    color: #333;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+#box-inf label {
+    color: #333;
+    font-size: 1.4rem;
+    font-style: oblique;
+    line-height: 30px;
+}
+
+
+
+#box-inf .footer-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+.footer {
+    background-color: black;
+    color: white;
+    padding: 60px 40px;
+    margin-top: 40px;
+}
+
+.footer .text-item {
+    font-size: 1.4rem;
+    padding: 0;
+    line-height: 26px;
+}
+
+.footer .h3 {
+    font-size: 2rem;
+    
+}
+
+.footer .text-logo {
+    font-size: 2.8rem;
+}
+
+.footer .text-description {
+    font-size: 1.6rem;
+}
+
+.footer i {
+    font-size: 20px;
+}
+
+.footer .col-item {
+    padding: 20px 0;
+    text-align: center;
+}
