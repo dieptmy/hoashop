@@ -232,7 +232,7 @@ window.onclick = function (event) {
 
 function confirmLogout() {
     if (confirm("Bạn có chắc chắn muốn đăng xuất không?")) {
-        window.location.href = '/index.php/login'; // Chuyển hướng tới trang login
+        window.location.href = '/Admin/admin-login'; // Chuyển hướng tới trang login
     }
 }
 
